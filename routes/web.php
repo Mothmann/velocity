@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('test', \App\Http\Controllers\admin\TestController::class);
     });
 });
+Route::get('auth/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
+Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
+Route::get('auth/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
+Route::get('auth/google/callback', [SocialController::class, 'loginWithGoogle']);
