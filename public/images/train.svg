@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1366 768" style="enable-background:new 0 0 1366 768;" xml:space="preserve">
+<style type="text/css">
+	.st0{stroke:#000000;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;}
+	.st3{display:none;}
+</style>
+<g id="Calque_2">
+	<g>
+		<g>
+			<rect x="193.5" y="313.5" class="st0" width="482" height="108"/>
+			<rect x="195.5" y="378.5" class="st1" width="9" height="6"/>
+			<rect x="211.5" y="336.5" class="st1" width="31" height="67"/>
+			<rect x="256.5" y="336.5" class="st1" width="31" height="36"/>
+			<rect x="301.5" y="336.5" class="st1" width="31" height="36"/>
+			<rect x="346.5" y="336.5" class="st1" width="31" height="36"/>
+			<rect x="490.5" y="336.5" class="st1" width="31" height="34"/>
+			<rect x="535.5" y="336.5" class="st1" width="31" height="34"/>
+			<rect x="579.5" y="336.5" class="st1" width="32" height="34"/>
+			<rect x="624.5" y="336.5" class="st1" width="32" height="67"/>
+			<rect x="664.5" y="380.5" class="st1" width="9" height="4"/>
+			<rect x="251.5" y="378.5" class="st1" width="366" height="5"/>
+		</g>
+		<g>
+			<path class="st0" d="M685,417.5L685,417.5c-4.1,0-7.5-3.4-7.5-7.5v-83c0-4.1,3.4-7.5,7.5-7.5l0,0c4.1,0,7.5,3.4,7.5,7.5v83
+				C692.5,414.1,689.1,417.5,685,417.5z"/>
+			<path class="st0" d="M702,417.5L702,417.5c-4.1,0-7.5-3.4-7.5-7.5v-83c0-4.1,3.4-7.5,7.5-7.5l0,0c4.1,0,7.5,3.4,7.5,7.5v83
+				C709.5,414.1,706.1,417.5,702,417.5z"/>
+		</g>
+		<g>
+			<rect x="711.5" y="313.5" class="st0" width="346" height="108"/>
+			<rect x="719.5" y="378.5" class="st1" width="6" height="6"/>
+			<rect x="733.5" y="336.5" class="st1" width="32" height="67"/>
+			<rect x="778.5" y="336.5" class="st1" width="31" height="34"/>
+			<rect x="822.5" y="336.5" class="st1" width="33" height="34"/>
+			<rect x="869.5" y="336.5" class="st1" width="31" height="34"/>
+			<rect x="997.5" y="336.5" class="st1" width="31" height="34"/>
+			<rect x="773.5" y="378.5" class="st1" width="284" height="5"/>
+		</g>
+		<g>
+			<g>
+				<g>
+					<rect x="1183.5" y="442.5" class="st0" width="32" height="12"/>
+					<rect x="1193.5" y="442.5" class="st0" width="22" height="46"/>
+				</g>
+				<rect x="711.5" y="476.5" class="st0" width="504" height="12"/>
+			</g>
+			<g>
+				<rect x="156.5" y="442.5" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 345 897)" class="st0" width="32" height="12"/>
+				<rect x="156.5" y="442.5" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 335 931)" class="st0" width="22" height="46"/>
+			</g>
+			<rect x="173.5" y="476.5" class="st0" width="504" height="12"/>
+			<rect x="677.5" y="442.5" class="st0" width="34" height="46"/>
+		</g>
+		<g>
+			<rect x="551.5" y="421.5" class="st0" width="21" height="44"/>
+			<rect x="295.5" y="421.5" class="st0" width="21" height="44"/>
+			<rect x="193.5" y="442.5" class="st0" width="482" height="23"/>
+		</g>
+		<g>
+			<g>
+				<rect x="976.7" y="421.5" class="st0" width="21" height="44"/>
+				<rect x="817.9" y="421.5" class="st0" width="21" height="44"/>
+				<rect x="712" y="443.5" class="st0" width="345.6" height="22"/>
+			</g>
+			<rect x="1057.6" y="443.5" class="st0" width="22" height="22"/>
+			<polygon class="st0" points="1079.6,443.5 1142.1,465.5 1079.6,465.5 			"/>
+		</g>
+		<rect x="1038.5" y="336.5" class="st2" width="25" height="34"/>
+		<path d="M1057.5,313.5c0,0,68.4,18.5,96.8,71.5c1.8,3.4,3.8,6.8,5.9,10c5,7.5,15.4,27.7,18.3,70.5h-30.7l-59-44h-31.3V313.5z"/>
+		<g>
+			<rect x="1057" y="336" class="st2" width="10" height="34.8"/>
+			<polygon class="st2" points="1067,336 1078.5,346 1094,346 1114.7,382 1080.1,382 1067,370.8 			"/>
+		</g>
+		<polygon class="st1" points="1101.5,345.5 1110.8,345.5 1142.1,378.5 1121.8,378.5 		"/>
+	</g>
+</g>
+<g id="Calque_1" class="st3">
+	
+		<image style="display:inline;overflow:visible;" width="1524" height="334" xlink:href="179858457_175267301133798_2059475163933868984_n.png"  transform="matrix(0.7359 0 0 0.7359 122.1843 261)">
+	</image>
+</g>
+</svg>
