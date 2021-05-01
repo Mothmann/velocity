@@ -12,7 +12,7 @@ use Exception;
 
 class SocialController extends Controller
 {
-    public function facebookRedirect(): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function facebookRedirect()
     {
         return Socialite::driver('facebook')->redirect();
     }
@@ -23,8 +23,6 @@ class SocialController extends Controller
             $user = Socialite::driver('facebook')->user();
             $isUser = User::where('fb_id', $user->id)->first();
 
-            # Если такой пользователь есть авторизуемся
-            # Иначе регистрируем
             if ($isUser) {
                 Auth::login($isUser);
 
@@ -47,7 +45,7 @@ class SocialController extends Controller
             dd($exception->getMessage());
         }
     }
-    public function googleRedirect(): \Symfony\Component\HttpFoundation\RedirectResponse
+    public function googleRedirect()
     {
         return Socialite::driver('google')->redirect();
     }
@@ -57,8 +55,6 @@ class SocialController extends Controller
             $user = Socialite::driver('google')->user();
             $isUser = User::where('google_id', $user->id)->first();
 
-            # Если такой пользователь есть авторизуемся
-            # Иначе регистрируем
             if ($isUser) {
                 Auth::login($isUser);
 

@@ -132,11 +132,11 @@
                         <img src="images/logo3.png" alt="">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
                         <div class="socials">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-youtube"></i></a>
-                            <a href="#"><i class="fa fa-tumblr"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-tumblr"></i></a>
                         </div>
                     </div>
                     <ul class="footer-right">
@@ -214,7 +214,7 @@
                     margin-bottom: 5%;
                 }
                 .grid-container .image img{
-                    width: 100%;
+                    width: 90%;
                     height: 100%;
 
                 }
@@ -227,12 +227,31 @@
                     margin-left: 3%;
                     margin-right: 3%;
                     color: white;
-                    }
+                }
 
-                    .part-1{
-                        width: 100%;
-                        height:85% !important;
-                    }
+                .part-1{
+                    width: 100%;
+                    height:85% !important;
+                }
+                /* width */
+                ::-webkit-scrollbar {
+                width: 10px;
+                }
+
+                /* Track */
+                ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                }
+
+                /* Handle */
+                ::-webkit-scrollbar-thumb {
+                background: #888;
+                }
+
+                /* Handle on hover */
+                ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+                }
 
                 .section i{
                     font-size: 4rem;
@@ -371,6 +390,7 @@
                 color: #fff;
                 font-size: 35px;
                 font-weight: 600;
+                z-index: 1;
                 }
                 nav ul{
                 display: flex;
@@ -464,7 +484,6 @@
 
                 .footer-left p{
                     padding-right: 20%;
-                    color: #999;
                 }
 
                 .socials a i{
@@ -549,11 +568,12 @@
                 }
                 nav ul{
                     position: fixed;
-                    top: 9.9vh;
+                    padding-top: 5%;
+                    top: 0vh;
                     left: -100%;
                     background: #111;
                     height: 100vh;
-                    width: 20%;
+                    width: 25%;
                     text-align: center;
                     display: block;
                     transition: all 0.3s ease;
@@ -641,7 +661,8 @@
                     }
 
                     .grid-container .image img{
-                        height: 90%;
+                        height: 100%;
+                        width: 100%;
                     }
 
                     .grid-container .image{
