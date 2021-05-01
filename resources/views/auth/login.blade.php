@@ -43,6 +43,16 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="text-white bg-indigo-600 hover:bg-indigo-500 px-10 py-4 w-full rounded-md text-center transition duration-150 ease-in-out" href="{{ route('auth.facebook') }}">
+                    Sign in with Facebook
+                </a>
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="text-white bg-red-600 hover:bg-red-500 px-10 py-4 w-full rounded-md text-center transition duration-150 ease-in-out" href="{{ route('auth.google') }}">
+                    Sign in with Google
+                </a>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

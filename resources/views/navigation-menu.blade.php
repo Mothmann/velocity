@@ -15,12 +15,12 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    @if (auth()->user()->role_id == 1)
+                    @if (auth()->user()->role_id == 2)
                         <x-jet-nav-link href="{{ route('admin.test.index') }}" :active="request()->routeIs('student.lessons.index')">
                             {{ __('testa') }}
                         </x-jet-nav-link>
                     @endif
-                    @if (auth()->user()->role_id == 2)
+                    @if (auth()->user()->role_id == 1)
                         <x-jet-nav-link href="{{ route('client.test.index') }}" :active="request()->routeIs('student.lessons.index')">
                             {{ __('testb') }}
                         </x-jet-nav-link>

@@ -17,11 +17,11 @@ class checkRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if ($role == 'admin' && auth()->user()->role_id != 1) {
+        if ($role == 'admin' && auth()->user()->role_id != 2) {
             abort(403);
         }
 
-        if ($role == 'client' && auth()->user()->role_id != 2) {
+        if ($role == 'client' && auth()->user()->role_id != 1) {
             abort(403);
         }
         return $next($request);
