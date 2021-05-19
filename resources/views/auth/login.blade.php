@@ -257,18 +257,21 @@ nav .menu-btn i{
     footer{
         margin-top: 20%;
     }
+    nav .logo{
+        font-size: 1.5rem;
+    }
 }
 #click:checked ~ .menu-btn i:before{
 content: "\f00d";
 }
 nav ul{
 position: fixed;
-padding-top: 15%;
-top: 0vh;
+padding-top: 5%;
+top: 10vh;
 left: -100%;
 background: #111;
-height: 100vh;
-width: 25%;
+height: 100%;
+width: 100%;
 text-align: center;
 display: block;
 transition: all 0.3s ease;
@@ -287,7 +290,6 @@ margin-left: -100%;
 display: block;
 font-size: 20px;
 transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-padding-bottom: 30%;
 }
 #click:checked ~ ul li a{
 margin-left: 0px;
