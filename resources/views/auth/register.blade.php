@@ -30,9 +30,9 @@
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{url("/about")}}">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{ url('/contact') }}">Contact</a></li>
             <!--<li><a href="#"><i class="fas fa-user"></i></a></li>-->
                 @if (Route::has('login'))
                     @auth
@@ -44,7 +44,7 @@
                         @endif
                     @endauth
                 @endif
-             <li><a href="#">Tickets</a></li>
+                <li><a href="{{ url('/tickets') }}">Tickets</a></li>
         </ul>
     </nav>
     <div class="title">Registration</div>

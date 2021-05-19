@@ -28,9 +28,9 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a class="active" href="#">Home</a></li>
+                <li><a class="active" href="{{url("/")}}">Home</a></li>
                 <li><a href="{{url("/about")}}">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{url("/contact")}}">Contact</a></li>
                 @if (Route::has('login'))
                     @auth
                         <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
@@ -40,7 +40,7 @@
                             <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
                         @endif
                     @endauth
-                <li><a href="#">Tickets</a></li>
+                <li><a href="{{url("/tickets")}}">Tickets</a></li>
                     <!--<li><a href="#"><i class="fas fa-user"></i></a></li>-->
 
             </ul>
