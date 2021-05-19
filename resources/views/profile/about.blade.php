@@ -17,9 +17,9 @@
           <i class="fas fa-bars"></i>
         </label>
         <ul>
-          <li><a  href="#">Home</a></li>
+          <li><a href="{{ url('/') }}">Home</a></li>
           <li><a href="{{url("/about")}}" class="active">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="{{ url('/contact') }}">Contact</a></li>
           @if (Route::has('login'))
             @auth
                 <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
@@ -31,6 +31,7 @@
           @endauth
             <!--<li><a href="#"><i class="fas fa-user"></i></a></li>-->
             @endif
+            <li><a href="{{ url('/tickets') }}">Tickets</a></li>
         </ul>
     </nav>
     <div class="empty"></div>
@@ -512,6 +513,11 @@
     padding: 0 40px 0 50px;
     }
     }
+    @media (max-width: 480px){
+        nav .logo{
+            font-size: 1.5rem;
+        }
+    }
     @media (max-width: 920px) {
 
     .empty{
@@ -530,11 +536,11 @@
     nav ul{
     position: fixed;
     padding-top: 5%;
-    top: 0vh;
+    top: 10vh;
     left: -100%;
     background: rgb(34,34,34);
-    height: 100vh;
-    width: 25%;
+    height: 100%;
+    width: 100%;
     text-align: center;
     display: block;
     transition: all 0.3s ease;
