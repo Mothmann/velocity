@@ -17,14 +17,17 @@
             font-family: 'Poppins', sans-serif;
             }
             body{
-                background: rgb(34,34,34);
+                background-color: rgb(34,34,34);
                 color: white;
+                transition: 0.3s linear;
             }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">Velocity</div>
+        <div class="logo">
+            <img src="images/logo2.png" alt="">
+        </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fas fa-bars"></i>
@@ -33,18 +36,22 @@
             <li><a href="{{url("/")}}">Home</a></li>
             <li><a href="{{url("/about")}}">About</a></li>
             <li><a href="{{url("/contact")}}">Contact</a></li>
-            @if (Route::has('login'))
-                @auth
-                    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                @else
-                    <li><a href="{{ route('login') }}">Log in</a></li>
-                    @if (Route::has('register'))
-                        <li><a href="{{ route('register') }}">Register</a></li>
+            <div class="dropdown">
+                <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                <div class="dropdown-content">
+                    @if (Route::has('login'))
+                        @auth
+                            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    @else
                     @endif
-                @endauth
-                <!--<li><a href="#"><i class="fas fa-user"></i></a></li>-->
-            @endif
-            <li><a href="{{url("/tickets")}}" class="active">Tickets</a></li>
+                        <li><a href="{{ route('login') }}">Log in</a></li>
+                        @if (Route::has('register'))
+                            <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                        @endif
+                    @endauth
+                </div>
+            </div>
+            <li><a class="active" href="{{url("/tickets")}}">Tickets</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -61,7 +68,7 @@
         </div>
         <div class="container-form">
             <form action="#">
-            <h2 class="heading heading-yellow">Reservation Online</h2>
+            <h2 class="heading heading-yellow" id="ylw">Reservation Online</h2>
             <div class="form-field">
                 <p>Your Name</p>
                 <input type="text" placeholder="Your Name">
@@ -95,7 +102,7 @@
     </div>
     <footer class="footer">
         <div class="footer-left">
-            <img src="images/logo3.png" alt="">
+            <img src="images/logo2.png" alt="">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -142,10 +149,39 @@
 
         <div class="footer-bottom">
             <p>All Rights Reserved By &copy;Velocity 2021</p>
+            <img class="footer-dark-mode" src="images/sun.png" id="icon">
         </div>
-
     </footer>
 </body>
+
+<script>
+    var icon = document.getElementById("icon");
+
+    let localData = localStorage.getItem("theme");
+
+    if(localData == "light"){
+        icon.src = "images/moon.png";
+        document.body.classList.remove("light-mode");
+    }
+    else if(localData == "dark"){
+        icon.src = "images/sun.png";
+              document.body.classList.remove("light-mode");
+    }
+
+     localStorage.setItem("theme" , "light");
+
+     icon.onclick = function() {
+         document.body.classList.toggle("light-mode");
+         if(document.body.classList.contains("light-mode")){
+             icon.src = "images/moon.png"
+             localStorage.setItem("theme" , "light");
+         }
+         else{
+             icon.src = "images/sun.png"
+             localStorage.setItem("theme" , "dark");
+         }
+     }
+ </script>
 </html>
 <style>
 .container {
@@ -153,6 +189,7 @@
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
     display: grid;
     grid-template-columns: 40% 60%;
+    background: rgb(34,34,34);
 }
 .container-time {
     background-color: rgb(23, 23, 23);
@@ -296,10 +333,14 @@ nav{
     margin-bottom: 5%;
 }
 nav .logo{
-    color: #fff;
+    color: rgb(255,183,0);
     font-size: 35px;
     font-weight: 600;
     z-index: 1;
+}
+nav .logo img{
+        max-width: 120px;
+        display: flex;
 }
 nav ul{
     display: flex;
@@ -310,7 +351,7 @@ nav ul li{
     margin: 0 5px;
 }
 nav ul li a{
-    color: #f2f2f2;
+    color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -318,6 +359,17 @@ nav ul li a{
     border-radius: 5px;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: rgb(34,34,34);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    padding: 12px 16px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 nav ul li a.active,
 nav ul li a:hover{
@@ -342,7 +394,12 @@ nav .menu-btn i{
 }
 
 @media (max-width: 920px) {
-
+    .fuck{
+        display: none;
+    }
+    nav .dropdown-content{
+        display: contents;
+    }
     nav .menu-btn i{
         display: block;
     }
@@ -417,6 +474,29 @@ background: none;
 color: rgb(255,183,0);
 }
 }
+.light-mode {
+    background-color: rgb(216, 216, 216);
+    color: rgb(34,34,34);
+    transition: 0.3s linear;
+    }
+.light-mode .section i{
+    border-color: rgb(34,34,34)
+}
+.light-mode .footer-left p{
+    color: white;
+}
+.light-mode .footer h2{
+    color: white;
+}
+.light-mode hr{
+    background: rgb(34,34,34);
+}
+.light-mode .heading, .light-mode h4, .light-mode p{
+    color: white;
+}
+.light-mode #ylw{
+    color: rgb(255,183,0);
+}
 /****************************************/
 /*footer*/
 
@@ -456,6 +536,7 @@ footer{
 
 .footer li{
     line-height: 2em;
+    margin-top: 1%;
 }
 
 .footer a{
@@ -474,7 +555,11 @@ footer{
     flex: 1 50%;
     margin-right: 1.25en;
 }
-
+.footer-dark-mode {
+        width: 30px;
+        cursor: pointer;
+        margin-top: 2%;
+    }
 .box a {
     color: #999;
 }

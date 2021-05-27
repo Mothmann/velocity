@@ -10,41 +10,48 @@
     <!-- Styles -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-        *{
+    *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
-        }
-        body{
-            background: rgb(34,34,34);
-            color: white;
-        }
+       }
+    body{
+        background-color: rgb(34,34,34);
+        color: white;
+        transition: 0.3s linear;
+    }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">Velocity</div>
+        <div class="logo">
+            <img src="images/logo2.png" alt="">
+        </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{url("/")}}">Home</a></li>
             <li><a href="{{url("/about")}}">About</a></li>
-            <li><a href="{{ url('/contact') }}">Contact</a></li>
-            <!--<li><a href="#"><i class="fas fa-user"></i></a></li>-->
-                @if (Route::has('login'))
-                    @auth
-                        <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+            <li><a href="{{url("/contact")}}">Contact</a></li>
+            <div class="dropdown">
+                <li class="fuck"><a class="active" href="#"><i class="fas fa-user"></i></a></li>
+                <div class="dropdown-content">
+                    @if (Route::has('login'))
+                        @auth
+                            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                     @else
+                    @endif
                         <li><a href="{{ route('login') }}">Log in</a></li>
                         @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}" class="active">Register</a></li>
+                            <li><a class="active" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
                         @endif
                     @endauth
-                @endif
-                <li><a href="{{ url('/tickets') }}">Tickets</a></li>
+                </div>
+            </div>
+            <li><a href="{{url("/tickets")}}">Tickets</a></li>
         </ul>
     </nav>
     <div class="title">Registration</div>
@@ -121,7 +128,7 @@
     </div>
     <footer class="footer">
         <div class="footer-left">
-            <img src="images/logo3.png" alt="">
+            <img src="images/logo2.png" alt="">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -167,11 +174,59 @@
         </ul>
 
         <div class="footer-bottom">
-            <p>All Rights Reserved By &copy;Souk 2021</p>
+            <p>All Rights Reserved By &copy;Velocity 2021</p>
+            <img class="footer-dark-mode" src="images/sun.png" id="icon">
         </div>
-
     </footer>
+    <script>
+        var icon = document.getElementById("icon");
+
+        let localData = localStorage.getItem("theme");
+
+        if(localData == "light"){
+            icon.src = "images/moon.png";
+            document.body.classList.remove("light-mode");
+        }
+        else if(localData == "dark"){
+            icon.src = "images/sun.png";
+                  document.body.classList.remove("light-mode");
+        }
+
+         localStorage.setItem("theme" , "light");
+
+         icon.onclick = function() {
+             document.body.classList.toggle("light-mode");
+             if(document.body.classList.contains("light-mode")){
+                 icon.src = "images/moon.png"
+                 localStorage.setItem("theme" , "light");
+             }
+             else{
+                 icon.src = "images/sun.png"
+                 localStorage.setItem("theme" , "dark");
+             }
+         }
+     </script>
 <style>
+.light-mode {
+    background-color: rgb(216, 216, 216);
+    color: rgb(34,34,34);
+    transition: 0.3s linear;
+}
+.light-mode .section i{
+    border-color: rgb(34,34,34)
+}
+.light-mode .footer-left p{
+    color: white;
+}
+.light-mode .footer h2{
+    color: white;
+}
+.light-mode .ar, .light-mode .ar:hover{
+    color: rgb(34,34,34);
+}
+.light-mode button.user-details{
+    color: rgb(34,34,34);
+}
     .body{
         display: flex;
         height: 50vh;
@@ -275,11 +330,15 @@
     margin-bottom: 5%;
 }
 nav .logo{
-    color: #fff;
+    color: rgb(255,183,0);
     font-size: 35px;
     font-weight: 600;
     z-index: 1;
 }
+nav .logo img{
+        max-width: 120px;
+        display: flex;
+    }
 nav ul{
     display: flex;
     flex-wrap: wrap;
@@ -289,7 +348,7 @@ nav ul li{
     margin: 0 5px;
 }
 nav ul li a{
-    color: #f2f2f2;
+    color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -311,6 +370,17 @@ nav .menu-btn i{
     input[type="checkbox"]{
     display: none;
 }
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: rgb(34,34,34);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+    padding: 12px 16px;
+    }
+.dropdown:hover .dropdown-content {
+    display: block;
+    }
 @media (max-width: 1000px){
     nav{
         padding: 0 40px 0 50px;
@@ -321,6 +391,12 @@ nav .menu-btn i{
 }
 
 @media (max-width: 920px) {
+    .fuck{
+        display: none;
+    }
+    nav .dropdown-content{
+        display: contents;
+    }
     nav{
         z-index: 2;
     }
@@ -470,6 +546,11 @@ padding-top: 50px;
 .footer-left p{
 padding-right: 20%;
 }
+.footer-dark-mode {
+        width: 30px;
+        cursor: pointer;
+        margin-top: 2%;
+    }
 .socials a i{
     color: #e7f2f4;
     padding: 10px 12px;
