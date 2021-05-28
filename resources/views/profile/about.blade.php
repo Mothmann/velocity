@@ -13,32 +13,38 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="{{url("/images/logo2.png")}}" alt="">
+            <a href="{{url("/")}}"><img src="{{url("/images/logo2.png")}}" alt=""></a>
+            </div>
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a href="{{url("/")}}">Home</a></li>
-            <li><a class="active" href="{{url("/about")}}">About</a></li>
-            <li><a href="{{url("/contact")}}">Contact</a></li>
-            <div class="dropdown">
-                <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
-                <div class="dropdown-content">
-                    @if (Route::has('login'))
-                    @auth
-                        <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+            <li><a class="active" href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
+            <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
+                    @if (Auth::check())
+                        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+                        <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                            <i class="fas fa-user-alt"></i></a></li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <li><a  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"><i class="fas fa-power-off"></i></a></li>
+                    </form>
                     @else
-                    @endif
+                    <div class="dropdown">
+                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <div class="dropdown-content">
                         <li><a href="{{ route('login') }}">Log in</a></li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
-                        @endif
-                    @endauth
+                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                    </div>
                 </div>
-            </div>
-            <li><a href="{{url("/tickets")}}">Tickets</a></li>
+                    @endif
+
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
     <div class="empty"></div>

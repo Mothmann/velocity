@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TripController;
 use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,13 @@ Route::get("/about", function(){
     return view("profile.about");
 });
 Route::get("/tickets", function(){
-    return view("profile.tickets");
+    return view("trips.index");
 });
 Route::get("/contact", function(){
     return view("profile.contact");
 });
+Route::get('trip', 'App\Http\Controllers\TripController@index') ;
+Route::resource('trip', 'App\Http\Controllers\TripController');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -35,9 +38,15 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('test', \App\Http\Controllers\client\TestController::class);
     });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
-        Route::resource('test', \App\Http\Controllers\admin\TestController::class);
+        Route::get('/index', 'App\Http\Controllers\AdminController@index')->name('admin.index');
+        Route::post('/add/trip', 'App\Http\Controllers\TripController@store')->name('trips.store');
+        Route::get('/edit/trip', 'App\Http\Controllers\TripController@edit')->name('trips.edit');
+        Route::get('/update/trip', 'App\Http\Controllers\TripController@update')->name('trips.update');
+        Route::get('/deletetrip', [TripController::class, 'destroy'])->name('deleteTrip');
+
     });
 });
+Route::post('/trip', 'App\Http\Controllers\TripController@index')->name('trips.index');
 Route::get('auth/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
 Route::get('auth/google', [SocialController::class, 'googleRedirect'])->name('auth.google');

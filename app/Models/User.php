@@ -26,10 +26,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'ville',
         'password',
         'role_id',
-        'fb_id',
-        'google_id'
     ];
 
     /**
@@ -61,4 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    protected $guarded = [];
+
+    public function ticket(){
+        return $this->hasMany(ticket::class)->order_by('id');
+    }
+    public function isAdmin(){
+        return $this->role ? true : false;
+    }
 }

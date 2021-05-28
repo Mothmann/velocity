@@ -26,36 +26,43 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="images/logo2.png" alt="">
+            <a href="{{url("/")}}"><img src="{{url("/images/logo2.png")}}" alt=""></a>
+            </div>
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a href="{{url("/")}}">Home</a></li>
-            <li><a href="{{url("/about")}}">About</a></li>
-            <li><a href="{{url("/contact")}}">Contact</a></li>
-            <div class="dropdown">
-                <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
-                <div class="dropdown-content">
-                    @if (Route::has('login'))
-                        @auth
-                            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+            <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
+            <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
+                    @if (Auth::check())
+                        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+                        <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                            <i class="fas fa-user-alt"></i></a></li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <li><a  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"><i class="fas fa-power-off"></i></a></li>
+                    </form>
                     @else
-                    @endif
+                    <div class="dropdown">
+                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <div class="dropdown-content">
                         <li><a href="{{ route('login') }}">Log in</a></li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
-                        @endif
-                    @endauth
+                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                    </div>
                 </div>
-            </div>
-            <li><a class="active" href="{{url("/tickets")}}">Tickets</a></li>
+                    @endif
+
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="container-time">
+            @include('includes.messages')
             <h2 class="heading">Time Open</h2>
             <h3 class="heading-days">Monday-Friday</h3>
             <p>7am - 11am (breakfast)</p>
@@ -66,40 +73,58 @@
             <hr>
             <h4 class="heading-phone">Call Us: (+212) 52-22-0711</h4>
         </div>
+
+         @yield('content')
         <div class="container-form">
-            <form action="#">
+            <form action="{{route('trips.index')}}" method="post">
+                @csrf
             <h2 class="heading heading-yellow" id="ylw">Reservation Online</h2>
             <div class="form-field">
-                <p>Your Name</p>
-                <input type="text" placeholder="Your Name">
+                <p for="search">Departure_city</p>
+                <input type="text" name="search" id="" class="form-control" placeholder="search...">
             </div>
             <div class="form-field">
-                <p>Your email</p>
-                <input type="email" placeholder="Your email">
+                <p for="search">Arrival_city</p>
+                <input type="text" name="search2" id="" class="form-control" placeholder="search...">
             </div>
             <div class="form-field">
-                <p>Date</p>
-                <input type="date">
+                <p for="search">Departure_station</p>
+                <input type="text" name="search3" id="" class="form-control" placeholder="search...">
             </div>
             <div class="form-field">
-                <p>Time</p>
-                <input type="time">
+                <p for="search">Arrival_station</p>
+                <input type="text" name="search4" id="" class="form-control" placeholder="search...">
             </div>
-            <div class="form-field">
-                <p>How many people?</p>
-                <select name="select" id="#">
-                <option value="1">1 person</option>
-                <option value="2">2 persons</option>
-                <option value="3">3 persosn</option>
-                <option value="4">4 persons</option>
-                <option value="5">5 persons</option>
-                <option value="5+">5+ persons</option>
-                </select>
-            </div>
-            <button class="btn">Submit</button>
-            </form>
+                <button class="btn"type="submit" >search</button>
         </div>
     </div>
+
+    <div class="row-2 ">
+        <div class="col-2">
+            <div class="box">
+               <h3 class="box-title">
+                   Trips
+               </h3>
+               <div class="trips">
+                    @foreach ($trips as $trip)
+                       <div class="infos">
+                           <div class="info-center">
+                               <h3 class="text-info">
+                                  <a herf="{{ route ('trip.show',$trip->id) }}" class="link">
+                                        {{$trip->Departure_city}}-{{$trip->Arrival_city}}
+                                  </a>
+                               </h3>
+                               <p class="info">
+                                   <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
+                                   <span class="price">{{$trip->price}} dh</span>
+                           </div>
+                       </div>
+                    @endforeach
+               </div>
+           </div>
+       </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
@@ -594,4 +619,55 @@ footer{
         font-size: 1.5rem;
     }
 }
+  .button{
+          background-color:rgb(255,183,0);
+          color:white;
+          padding: 15px 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        .button:hover, button:active {
+           color:white;
+           background-color:rgb(255,149,0) ;
+        }
+       .trips{
+          width:1000px;
+          background: rgb(34,34,34);
+          color: rgb(255,183,0);
+        }
+        .row-1{
+          width:1000px;
+          margin-top: 30px;
+          margin-left:40px
+        }
+       .row-2{
+          width:1000px;
+          margin: 20px;
+          display: contents;
+        }
+        .col-2 {
+           display: flex;
+           flex-direction: row;
+           flex-wrap: nowrap;
+           justify-content: center;
+           align-content: center;
+           align-items: center;
+         }
+       .infos{
+          width: 100%;
+          margin-bottom: 10px;
+          justify-content: space-between;
+          box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
+          border-radius: 20px;
+          border: rgb(42, 41, 41) 1px solid;
+        }
+       .info{
+          display:flex;
+          justify-content: space-between;
+          margin: 50px;
+}
+
+
 </style>

@@ -2,51 +2,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Velocity : register</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+       }
+    body{
+        background-color: rgb(34,34,34);
+        color: white;
+        transition: 0.3s linear;
+    }
+    </style>
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="{{url("/images/logo2.png")}}" alt="">
+            <a href="{{url("/")}}"><img src="{{url("/images/logo2.png")}}" alt=""></a>
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a href="{{url("/")}}">Home</a></li>
-            <li><a href="{{url("/about")}}">About</a></li>
-            <li><a href="{{url("/contact")}}">Contact</a></li>
-            <li><a class="active" href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <div class="dropdown">
-                <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
-                <div class="dropdown-content">
+            <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
+            <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
+            <li><a class="active" href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
                 <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
-                        <li><a><x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                            {{ __('Log Out') }}</a></li>
-                        <li><a></x-jet-responsive-nav-link></a></li>
+                        <li><a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            <i class="fas fa-power-off"></i></a></li>
                 </form>
-                <li><a><x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                            {{ __('Profile') }}
-                </x-jet-responsive-nav-link></a></li>
-                </div>
-            </div>
-            <li><a href="{{url("/tickets")}}">Tickets</a></li>
+                <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                    <i class="fas fa-user-alt"></i></a></li>
+
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
             <div>
                 @if (auth()->user()->role_id == 2)
-                    <li><a><x-jet-nav-link href="{{ route('admin.test.index') }}" :active="request()->routeIs('testa')">
-                        {{ __('testa') }}
-                    </x-jet-nav-link></li></a>
-                @endif
-                @if (auth()->user()->role_id == 1)
-                    <li><a><x-jet-nav-link href="{{ route('client.test.index') }}" :active="request()->routeIs('testb')">
-                        {{ __('testb') }}
+                    <li><a><x-jet-nav-link href="{{ route('admin.admin.index') }}" :active="request()->routeIs('admin')">
+                        {{ __('admin') }}
                     </x-jet-nav-link></li></a>
                 @endif
             </div>
