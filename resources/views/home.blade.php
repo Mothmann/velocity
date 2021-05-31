@@ -16,6 +16,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
             }
         </style>
 
@@ -79,7 +80,7 @@
                 <div class="middle" id="middle">
                         <div class="welcome">
                             <h1>Welcome To Velocity.</h1>
-                            <p>Lorem ipsum dolor sit amet adipisicing elit. Delectus consequatur sed tempus.</p>
+                            <p style="font-size: 2rem">Your Satisfaction Is Our Priority.</p>
 
                         </div>
 
@@ -87,66 +88,66 @@
                         <div class="col span_1_of_3">
                             <i class="fa fa-clock"></i>
                             <h3>Timeless</h3>
-                            <p>Far far away, behind the word mountains,<br> far from the countries.</p>
+                            <p>We simplify the travel planning process so that your time can be saved.</p>
                         </div>
                         <div class="col span_1_of_3">
                             <i class="fa fa-comments"></i>
                             <h3>Active Support</h3>
-                            <p>Far far away, behind the word mountains,<br> far from the countries.</p>
+                            <p>24/7 Customer Service support, travel advice and ticket management.</p>
                         </div>
                         <div class="col span_1_of_3">
-                            <i class="fa fa-user"></i>
-                            <h3>User Friendly</h3>
-                            <p>Far far away, behind the word mountains,<br> far from the countries.</p>
+                            <i class="fa fa-virus"></i>
+                            <h3>Covid travel updates</h3>
+                            <p>Find out what testing and quarantine rules apply for your journey.</p>
                         </div>
                     </div>
                 </div>
                 <div class="lower-body">
-                    <h2>Lorem ipsum dolor sit</h2>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, autem.</h4>
+                    <h2>Learn more about us .</h2>
+                    <h4 style="font-size: 1.5rem">Discover more information about Velocity.</h4>
                     <hr>
 
                     <div class="grid-container">
                         <div class="part-1">
                             <div class="image">
-                                <img src="images/1.jpg" alt="">
+                                <img src="images/5.jpg" alt="">
                             </div>
-                            <h2>Lorem ipsum dolor sit</h2>
+                            <h2>Comfortable transport</h2>
                             <hr>
-                            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae expedita totam accusamus architecto. Esse, iste ut!</h4>
+                            <h4>Having a pleasent ride in our trains is a <br> number one priority .</h4>
                             <div class="button">
                                 <a href="#middle">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
                             <div class="image">
-                                <img src="images/2.jpg" alt="">
+                                <img src="images/6.jpg" alt="">
                             </div>
-                            <h2>Lorem ipsum dolor sit</h2>
+                            <h2>Our commitments</h2>
                             <hr>
-                            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae expedita totam accusamus architecto. Esse, iste ut!</h4>
+                            <h4>We pride ourselves in our diversity, ethics, transparency, climate and solidarity .</h4>
                             <div class="button">
                                 <a href="#middle">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
                             <div class="image">
-                                <img src="images/3.jpg" alt="">
+                                <img src="images/7.jpg" alt="">
                             </div>
-                            <h2>Lorem ipsum dolor sit</h2>
+                            <h2>Our passenger offers</h2>
                             <hr>
-                            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae expedita totam accusamus architecto. Esse, iste ut!</h4>
+                            <h4>Trains, passenger services, cards & fares, <br> and sustainable mobility .</h4>
                             <div class="button">
                                 <a href="#middle">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
                             <div class="image">
-                                <img src="images/4.jpg" alt="">
+                                <img src="images/8.jpg" alt="">
                             </div>
-                            <h2>Lorem ipsum dolor sit</h2>
+                            <h2>Booking</h2>
                             <hr>
-                            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae expedita totam accusamus architecto. Esse, iste ut!</h4>
+                            <h4>Your door-to-door itinerary, timetables, booking, and real-time traffic updates.</h4>
                             <div class="button">
                                 <a href="#middle">Learn More</a>
                             </div>
@@ -157,7 +158,7 @@
                 <footer class="footer">
                     <div class="footer-left">
                         <img src="images/logo2.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+                        <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
                         <div class="socials">
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -218,10 +219,6 @@
     .dropdown:hover .dropdown-content {
         display: block;
     }
-    *{
-        scroll-behavior: smooth;
-    }
-
     .light-mode {
         background-color: rgb(216, 216, 216);
         color: rgb(34,34,34);
@@ -416,7 +413,7 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 2%;
-        margin-top: 3%;
+        padding-top: 3%;
     }
     .middle{
         background: rgb(34,34,34);

@@ -33,7 +33,7 @@
         <ul>
             <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
             <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
-            <li><a class="active" href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+            <li><a class="active" href="{{ url('/dashboard') }}" id="x1"><i class="fas fa-tachometer-alt"></i></a></li>
                 <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <li><a href="{{ route('logout') }}"
@@ -41,7 +41,7 @@
                             this.closest('form').submit();">
                             <i class="fas fa-power-off"></i></a></li>
                 </form>
-                <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                <li><a id="x2" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     <i class="fas fa-user-alt"></i></a></li>
 
             <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>

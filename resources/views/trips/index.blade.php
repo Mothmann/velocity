@@ -57,21 +57,21 @@
                 </div>
                     @endif
 
-            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt" style="color: rgb(255,183,0)"></i></a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="container-time">
             @include('includes.messages')
-            <h2 class="heading">Time Open</h2>
-            <h3 class="heading-days">Monday-Friday</h3>
-            <p>7am - 11am (breakfast)</p>
-            <p>11am - 10pm (lunch/dinner)</p>
-            <h3 class="heading-days">Saturday and sunday</h3>
-            <p>9am - 1am (breakfast)</p>
-            <p>1am - 10pm (lunch/dinner)</p>
+            <h2 class="heading">Booking</h2>
+            <h3 class="heading-days">Book your train tickets</h3>
+            <p>from the comfort of your home</p>
+            <p>n just a few clicks</p>
+            <h3 class="heading-days">No More Waiting</h3>
+            <p>You no longer have to wait in long queues for Velocity ticket booking</p>
+            <p>since online railway reservation is now easy, quick and secure with Velocity online reservation</p>
             <hr>
-            <h4 class="heading-phone">Call Us: (+212) 52-22-0711</h4>
+            <h4 class="heading-phone">Call Us: (+212) 522-029-44</h4>
         </div>
 
          @yield('content')
@@ -98,13 +98,10 @@
                 <button class="btn"type="submit" >search</button>
         </div>
     </div>
-
+    <h3 style="color: rgb(255,183,0);letter-spacing:2px; text-align:center;font-weight:700;font-size:3rem;margin:2% 0">Trips</h3>
     <div class="row-2 ">
         <div class="col-2">
-            <div class="box">
-               <h3 class="box-title">
-                   Trips
-               </h3>
+            <div class="boxe">
                <div class="trips">
                     @foreach ($trips as $trip)
                        <div class="infos">
@@ -128,7 +125,7 @@
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+            <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -209,8 +206,31 @@
  </script>
 </html>
 <style>
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+    .light-mode span{
+        color: rgb(255,183,0);
+    }
 .container {
-    margin: 200px;
+    margin: auto;
+    width: 85%;
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
     display: grid;
     grid-template-columns: 40% 60%;
@@ -218,10 +238,12 @@
 }
 .container-time {
     background-color: rgb(23, 23, 23);
-    padding: 50px;
+    padding: 40px;
     outline: 3px dashed rgb(255,183,0);
     outline-offset: -30px;
     text-align: center;
+    margin: auto;
+    height: 100%;
 }
 .heading {
     font-size: 35px;
@@ -233,7 +255,14 @@
     font-size: 30px;
 
 }
-
+.boxe{
+    width: -webkit-fill-available;
+    margin: auto;
+}
+h3.text-info {
+    color: antiquewhite;
+    padding: 5% 0 0 5%;
+}
 .heading-phone {
     font-size: 20px;
 }
@@ -255,6 +284,7 @@ form p {
 .form-field {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 input,select {
@@ -633,7 +663,6 @@ footer{
            background-color:rgb(255,149,0) ;
         }
        .trips{
-          width:1000px;
           background: rgb(34,34,34);
           color: rgb(255,183,0);
         }
@@ -654,6 +683,8 @@ footer{
            justify-content: center;
            align-content: center;
            align-items: center;
+           width: 90%;
+           margin: auto;
          }
        .infos{
           width: 100%;

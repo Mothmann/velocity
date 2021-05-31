@@ -81,7 +81,7 @@
                 <div class="main-header">
                     <h1>Login</h1>
                     <hr />
-                    <h3>Please Enter Your Credentials</h3>
+                    <h3>{{ __('Please Enter Your Credentials') }}</h3>
                     <div class="mt-4">
                         <h4>Email :</h4>
                         <x-jet-label for="email"/>
@@ -164,7 +164,7 @@
                     <li><a href="#">8 ibnou khatima</a></li>
                     <li><a href="#">Rue Les Hopitaux</a></li>
                     <li><a href="#">Casablanca</a></li>
-                    <li><a href="#">Maroc</a></li>
+                    <li><a href="#">{{__('Maroc') }}</a></li>
                 </ul>
             </li>
         </ul>
@@ -173,6 +173,15 @@
             <p>All Rights Reserved By &copy;Velocity 2021</p>
             <img class="footer-dark-mode" src="images/sun.png" id="icon">
         </div>
+
+        <div class="languages">
+            @foreach(config()->get('app.locales') as $code => $lang)
+                <a href="http://{{$code}}.localhost:8000/login">{{ $lang }}</a>
+            @endforeach
+        </div>
+
+
+
     </footer>
 
 <script>
@@ -207,6 +216,13 @@
 </html>
 
 <style>
+    .\}\}\<\/div\>.\<ul.class\={
+        color: #dd4b39;
+        text-align: center;
+        display: block;
+        margin-bottom: 3%;
+    }
+
     /*navigation css with resonsive*/
 nav{
     display: flex;
@@ -275,21 +291,20 @@ nav .menu-btn i{
     nav{
         padding: 0 40px 0 50px;
     }
-    .empty{
-        height: 25vh;
-    }
 }
 
 @media (max-width: 920px) {
+    .\}\}\<\/div\>.\<ul.class\={
+        padding-top: 15%;
+    }
     nav{
         position: fixed;
     }
     nav .menu-btn i{
         display: block;
     }
-    .empty{
-    height: 10rem;
-    background: rgb(34,34,34);
+    .main-header{
+        margin-top: 15%;
     }
     .fuck{
         display: none;

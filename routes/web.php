@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get("/about", function(){
     return view("profile.about");
 });
-Route::get("/tickets", function(){
+Route::get("/trip", function(){
     return view("trips.index");
 });
 Route::get("/contact", function(){
