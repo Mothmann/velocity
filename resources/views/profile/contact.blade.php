@@ -19,6 +19,7 @@
         body{
             background: rgb(34,34,34);
             color: white;
+            transition: 0.3s linear;
         }
 </style>
 </head>
@@ -75,7 +76,7 @@
                         </li>
                         <li>
                             <span><img src="images/mail.png" alt=""></span>
-                            <span>velocity@gmail.com</span>
+                            <span>velocitynoreply@gmail.com</span>
                         </li>
                         <li>
                             <span><img src="images/call.png" alt=""></span>
@@ -126,7 +127,7 @@
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+            <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -207,6 +208,7 @@
 </body>
 </html>
 <style>
+
     section{
         display: flex;
         justify-content: center;
@@ -702,4 +704,5 @@ footer{
         font-size: 1.5rem;
     }
 }
+
 </style>

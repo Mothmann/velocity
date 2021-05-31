@@ -319,6 +319,7 @@
             display: block;
         }
     }
+
 </style>
 <script>
     var icon = document.getElementById("icon");

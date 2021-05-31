@@ -1,27 +1,31 @@
 <x-jet-form-section submit="updatePassword">
     <x-slot name="title">
-        {{ __('Update Password') }}
+        <div class="title">
+            {{ __('Update Password') }}
+        </div>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        <div class="description">
+            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        </div>
     </x-slot>
 
     <x-slot name="form">
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="current_password" value="{{ __('Current Password') }}" />
+        <div class="cp">
+            <p>Current Password</p>
             <x-jet-input id="current_password" type="password" class="mt-1 block w-full" wire:model.defer="state.current_password" autocomplete="current-password" />
             <x-jet-input-error for="current_password" class="mt-2" />
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="password" value="{{ __('New Password') }}" />
+        <div class="np">
+            <p>New Password &nbsp; &nbsp; &nbsp;</p>
             <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="state.password" autocomplete="new-password" />
             <x-jet-input-error for="password" class="mt-2" />
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+        <div class="cf">
+            <p>Confirm Password</p>
             <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
             <x-jet-input-error for="password_confirmation" class="mt-2" />
         </div>
@@ -31,9 +35,24 @@
         <x-jet-action-message class="mr-3" on="saved">
             {{ __('Saved.') }}
         </x-jet-action-message>
-
-        <x-jet-button>
-            {{ __('Save') }}
-        </x-jet-button>
+        <div class="save">
+            <x-jet-button>
+                {{ __('Save') }}
+            </x-jet-button>
+        </div>
     </x-slot>
 </x-jet-form-section>
+<hr>
+<style>
+    .cp ,.np ,.cf{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin: 2%;
+    }
+    .cp p,.np p,.cf p{
+        margin-right: 5%;
+    }
+</style>

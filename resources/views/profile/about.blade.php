@@ -7,7 +7,6 @@
     <title>Velocity : About</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
@@ -21,7 +20,7 @@
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a class="active" href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
+            <li><a class="active" href="{{url("/about")}}"><i class="fas fa-address-card" style="color: rgb(255,183,0)"></i></a></li>
             <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
                     @if (Auth::check())
                         <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
@@ -44,7 +43,7 @@
                 </div>
                     @endif
 
-            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
+            <li><a href="{{url("/tickets")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
     <div class="empty"></div>
@@ -58,30 +57,67 @@
         <img id="trainImg" src="images/train.png" alt="">
     </div>
     <div class="paragraph">
-        <p>Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat
-            commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia.Vestibulum accumsan ac metus massa
-            tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent Cubilia lacinia interdum massa faucibus blandit nullam.
-            Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan.</p>
+        <p>Velocity is a preferred Train provider in Morocco. Travel, with great-value fares that offers great-value, high-comfort trips.</p>
     </div>
     <div class="paragraph">
-        <p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius
-            cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus.
-            In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam
-            id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam.
-            Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem
-            amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.</p>
+        <p>Velocity is the perfect choice for convenient, excellent-value intercity travel in well-equipped coaches across Morocco. Relax in luxurious, reclinable seats. Pricing is more than competitive: it is about the best value on the market. There is no skimping on facilities. There are tables for computers and other mobile electronics, plus electrical charging points.</p>
     </div>
     <div class="paragraph">
-        <p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia
-            adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet
-            magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante
-            adipiscing commodo integer arcu amet blandit adipiscing arcu ante.</p>
+        <p>Every Velocity service has free Wi-Fi. There are restrooms on every Velocity compartments. What is more, travelers can book their preferred seat when they buy their tickets online.</p>
+    </div>
+    <div class="lower-body">
+        <h2>Learn more about us</h2>
+        <h4>Discover more information about Velocity</h4>
+        <hr>
+<div class="fl">
+    <div class="grid-container">
+        <div id="row1">
+            <div id="image1">
+                <img src="images/5.jpg" alt="">
+                <div id="paragraph1">
+                    <h2>Comfortable transport</h2>
+                    <p>Having a pleasent ride in our trains is a number one priority, therfore, our fares are well equipped with luxurious and confortable seats .</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="row2">
+            <div id="image2">
+                <div id="paragraph2">
+                    <h2>Our commitments</h2>
+                    <p>We pride ourselves in our diversity, ethics, transparency, climate and solidarity, that's why we respect everyone's health and make sure that our environment is Covid-Free .</p>
+                </div>
+                <img src="images/6.jpg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div id="row1">
+            <div id="image1">
+                <img src="images/7.jpg" alt="">
+                <div id="paragraph1">
+                <h2>Our passenger offers</h2>
+                <p>Our passenger's satisfaction is our responsibility, in Velocity, we offer safe and comfortable trains, a top notch passenger service, clean, safe, and well equipped fares, as well as sustainable mobility.</p>
+            </div>
+        </div>
+        </div>
+        <hr>
+        <div id="row2">
+            <div id="image2">
+                <div id="paragraph2">
+                    <h2>Booking</h2>
+                    <p>We offer both a web and mobile solution to facilitate booking, as well as your ordinary door-to-door itinerary services, and multiple kiosks to buy your tickets on the spot.</p>
+                </div>
+                <img src="images/8.jpg" alt="">
+            </div>
+        </div>
     </div>
 
+    </div>
+</div>
         <footer class="footer">
             <div class="footer-left">
                 <img src="images/logo2.png" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+                <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
                 <div class="socials">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -162,6 +198,7 @@
 
 </html>
 <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
     *{
     margin: 0;
@@ -173,18 +210,43 @@
     li.fuck:hover{
         color: rgb(255,183,0);
         transition: 0.3s ease-in-out;
+    }
+    #trainImg{
+        width: 75%;
+        padding: 2% 0 2% 0;
+        display: block;
+        margin: auto;
 
     }
-    .dropdown-content{
-        display: none;
-        position: absolute;
-        background-color: rgb(34,34,34);
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        min-width: 160px;
-        padding: 12px 16px;
+    #image1{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5%;
+        margin-right: 5%;
     }
-    .dropdown:hover .dropdown-content {
-        display: block;
+    #image2{
+        display: flex;
+        margin-left: 5%;
+        margin-right: 5%;
+        align-items: center;
+    }
+    .fl{
+        margin-bottom: 2%;
+    }
+    .grid-container p{
+        text-align: center;
+    }
+    .grid-container #row1 #image1 img{
+        width: 40% !important;
+        margin-right: 3%;
+    }
+    .grid-container #row2 #image2 img{
+        width: 40% !important;
+        margin-left: 3%;
     }
     .light-mode {
         background-color: rgb(216, 216, 216);
@@ -210,6 +272,38 @@
     .light-mode .paragraph p{
         color: rgb(34,34,34);
     }
+    .light-mode .lower-body{
+        background-color: rgb(216, 216, 216);
+        transition: 0.3s linear;
+    }
+
+    .light-mode .lower-body p ,.light-mode .lower-body h4{
+        color: rgb(34, 34, 34)
+    }
+
+    .light-mode .lower-body h2{
+        color:rgb(250 172 33);
+    }
+        /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        }
+
+        /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        }
+
+        /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        }
+
     body{
         background-color: rgb(34,34,34);
         color: white;
@@ -232,6 +326,7 @@
         letter-spacing: 3px;
         margin-top: 3%;
         margin-bottom: 3%;
+
     }
     .title h2{
         text-align: center;
@@ -256,69 +351,152 @@
         letter-spacing: 3px;
     }
 
-    @media screen and (min-width: 700px){
-    .train{
-        margin: auto;
-        margin-top: 5%;
+    #row1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
         margin-bottom: 3%;
+        width: 100%;
+        min-height: 200px;
+        overflow: auto;
+
+    }
+    #row2{
+        width: 100%;
+        min-height: 200px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .lower-body h2 , .lower-body h4{
+        display: flex;
         align-items: center;
         justify-content: center;
+
+    }
+@media screen and (max-width: 700px){
+
+    .lower-body{
         text-align: center;
+        align-items: center;
+        justify-content: center;
+        background: rgb(34,34,34);
     }
-    .train img{
-        width: 70%;
+    .lower-body h2{
+        margin-bottom: 3%;
+        padding-top: 3%;
     }
-    .title{
-    margin-top: 2%;
+
+    #paragraph1{
+        float: left;
+        width: 50%;
+        padding-right: 60px;
     }
+    #image2 img , #image1 img{
+        float: none;
+        width: 50%;
+        margin-top: 4%;
+        margin-left: 0% !important;
+    }
+    #paragraph2{
+        float: right;
+        width: 50%;
+        padding-left: 60px;
+    }
+    #row1 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3%;
+        width: 100%;
+        min-height: 200px;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+    #row2{
+        width: 100%;
+        min-height: 200px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+    }
+    .grid-container #row2 #image2 img{
+        margin-right: 0%;
+    }
+    .grid-container #row1 #image1 img{
+        margin-left: 0%;
+    }
+    .lower-body hr{
+        display: none;
+    }
+    .grid-container #row1 #image1 img{
+        width: 55%;
+        margin-right: 0;
+    }
+    .grid-container #row2 #image2 img{
+        width: 55%;
+        margin-right: 0;
+    }
+    #paragraph1 , #paragraph2{
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 5%;
+    }
+    #image1{
+        flex-direction: column;
+        width: 130%;
+    }
+    #image2{
+        flex-direction: column-reverse;
+        width: 130%;
+
+    }
+}
     nav{
-    margin-bottom: 5%;
-    display: flex;
-    height: 10vh;
-    width: 100%;
-    background: rgb(34,34,34);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px 0 100px;
-    flex-wrap: wrap;
-    z-index: 3;
+        margin-bottom: 5%;
+        display: flex;
+        height: 10vh;
+        width: 100%;
+        background: rgb(34,34,34);
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        z-index: 3;
     }
     nav .logo{
-    color: rgb(255,183,0);
-    font-size: 35px;
-    font-weight: 600;
-    z-index: 1;
+        color: rgb(255,183,0);
+        font-size: 35px;
+        font-weight: 600;
+        z-index: 1;
     }
     nav .logo img{
         max-width: 120px;
         display: flex;
+        width: 100%;
     }
-    /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
     nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
     }
     nav ul li{
-    margin: 0 5px;
+        margin: 0 5px;
     }
     nav ul li a{
         color: white;
@@ -330,25 +508,34 @@
         letter-spacing: 1px;
         transition: all 0.3s ease;
     }
-    nav ul li a.active,
-    nav ul li a:hover{
-    color: rgb(255,183,0);
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
-    nav .menu-btn i{
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
+    nav ul li a i.active,
+    nav ul li a i:hover{
+        color: rgb(255,183,0);
+    }
+    .dropdown-content {
     display: none;
+    position: absolute;
+    background-color: rgb(34,34,34);
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+    min-width: 160px;
+    padding: 12px 16px;
+}
+    nav .menu-btn i{
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
     }
     input[type="checkbox"]{
-    display: none;
+        display: none;
     }
-
-
     @media (max-width: 1000px){
-    nav{
-    padding: 0 40px 0 50px;
-    }
+        nav{
+            padding: 0 40px 0 50px;
+        }
     }
     @media (max-width: 480px){
         nav .logo{
@@ -357,165 +544,166 @@
     }
     @media (max-width: 920px) {
         .fuck{
-        display: none;
-    }
-    nav .dropdown-content{
-        display: contents;
-    }
-    .empty{
-    height: 10vh;
-    }
-    nav{
-    position: fixed;
-    }
-    nav .menu-btn i{
-    display: block;
-    }
-    #click:checked ~ .menu-btn i:before{
-    content: "\f00d";
-    }
-    nav ul,a.loreg{
-        position: fixed;
-        padding-top: 5%;
-        top: 10vh;
-        left: -100%;
-        background: #111;
-        height: 90vh;
-        width: 100vw;
-        text-align: center;
-        display: block;
-        transition: all 0.3s ease;
-        opacity: 0.9;
-    }
-    nav ul{
-        position: fixed;
-        padding-top: 5%;
-        top: 10vh;
-        left: -100%;
-        background: rgb(34,34,34);
-        height: 100%;
+            display: none;
+        }
+        nav .dropdown-content{
+            display: contents;
+        }
+        .empty{
+            height: 10vh;
+        }
+        nav{
+            position: fixed;
+        }
+        nav .menu-btn i{
+            display: block;
+        }
+        #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+        }
+        nav ul,a.loreg{
+            position: fixed;
+            padding-top: 5%;
+            top: 10vh;
+            left: -100%;
+            background: #111;
+            height: 90vh;
+            width: 100vw;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        nav ul{
+            position: fixed;
+            padding-top: 5%;
+            top: 10vh;
+            left: -100%;
+            background: rgb(34,34,34);
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        #click:checked ~ ul{
+            left: 0;
+        }
+        nav ul li{
+            width: 100%;
+            margin: 20px 0;
+        }
+        nav ul li a{
         width: 100%;
-        text-align: center;
+        margin-left: -100%;
         display: block;
-        transition: all 0.3s ease;
-        opacity: 0.9;
+        font-size: 20px;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked ~ ul li a{
+        margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover{
+        background: none;
+        color: rgb(255,183,0);
+        }
     }
-    #click:checked ~ ul{
-        left: 0;
-    }
-    nav ul li{
-        width: 100%;
-        margin: 20px 0;
-    }
-    nav ul li a{
-    width: 100%;
-    margin-left: -100%;
-    display: block;
-    font-size: 20px;
-    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-    #click:checked ~ ul li a{
-    margin-left: 0px;
-    }
-    nav ul li a.active,
-    nav ul li a:hover{
-    background: none;
-    color: rgb(255,183,0);
-    }
-    }
-    /*footer*/
+/*footer*/
 
-    footer{
-    margin-top: 3%;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    flex-flow: row wrap;
-    padding: 50px;
-    color: white;
-    background-color: rgb(34, 34, 34);
+footer{
+
+        display: flex;
+        flex-flow: row wrap;
+        padding: 50px;
+        padding-bottom: 1%;
+        background: rgb(34,34,34);
     }
 
     .footer > *{
-    flex: 1 100%;
+        flex: 1 100%;
     }
     .footer-left{
-    margin-right: 1.25em;
-    margin-bottom: 2em;
+        margin-right: 1.25em;
+        margin-bottom: 2em;
 
     }
     .footer-left img{
-    width: 50%;
+        width: 50%;
     }
 
     .footer h2{
-    font-weight: 600;
-    font-size: 17px;
+        font-weight: 600;
+        font-size: 17px;
     }
 
     .footer ul{
-    list-style: none;
-    padding-left: 0;
+        list-style: none;
+        padding-left: 0;
     }
 
     .footer li{
-    line-height: 2em;
+        line-height: 2em;
+        margin-top: 1%;
     }
 
     .footer a{
-    text-decoration: none;
+        text-decoration: none;
     }
     .footer-right{
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    flex-flow: row wrap;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: row wrap;
     }
+
+    .footer-right > * {
+        flex: 1 50%;
+        margin-right: 1.25en;
+    }
+
+    .box a {
+        color: #999;
+        margin-right: 10%;
+    }
+
+    .footer-bottom{
+        text-align: center;
+        color: #999;
+        padding-top: 50px;
+    }
+
+    .footer-left p{
+        padding-right: 20%;
+    }
+
     .footer-dark-mode {
         width: 30px;
         cursor: pointer;
         margin-top: 2%;
     }
-    .footer-right > * {
-    flex: 1 50%;
-    margin-right: 1.25en;
-    }
 
-    .box a {
-    background: rgb(34,34,34);
-    }
-
-    .footer-bottom{
-    text-align: center;
-    color: #999;
-    padding-top: 50px;
-    }
-
-    .footer-left p{
-    padding-right: 20%;
-    }
-
-    .socials i{
-    color: #e7f2f4;
-    padding: 10px 12px;
-    font-size: 20px;
+    .socials a i{
+        color: #e7f2f4;
+        padding: 10px 12px;
+        font-size: 20px;
     }
 
     @media screen and (min-width: 600px) {
-    .footer-right > * {
-    flex: 1;
+        .footer-right > * {
+            flex: 1;
+        }
+        .footer-left{
+            flex: 1 0px;
+        }
+        .footer-right{
+            flex: 2 0px;
+        }
+        .col p{
+            font-size: 1.5rem;
+        }
     }
-    .footer-left{
-    flex: 1 0px;
-    }
-    .footer-right{
-    flex: 2 0px;
-    }
-}
-    }
-
 </style>

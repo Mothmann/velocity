@@ -1,14 +1,18 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        <div class="title">
+            {{ __('Browser Sessions') }}
+        </div>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Manage and log out your active sessions on other browsers and devices.') }}
+        <div class="description">
+            {{ __('Manage and log out your active sessions on other browsers and devices.') }}
+        </div>
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600">
+        <div class="content">
             {{ __('If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.') }}
         </div>
 
@@ -89,9 +93,134 @@
                 <x-jet-button class="ml-2"
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
-                    {{ __('Log Out Other Browser Sessions') }}
+                            {{ __('Log Out Other Browser Sessions') }}
                 </x-jet-button>
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>
 </x-jet-action-section>
+<footer class="footer">
+    <div class="footer-left">
+        <img src="{{url("images/logo2.png")}}" alt="">
+        <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tumblr"></i></a>
+        </div>
+    </div>
+    <ul class="footer-right">
+        <li>
+            <h2>Product</h2>
+
+            <ul class="box">
+                <li><a href="#">Theme Design</a></li>
+                <li><a href="#">Plugin Design</a></li>
+                <li><a href="#">Wordpress</a></li>
+                <li><a href="#">Joomla Template</a></li>
+                <li><a href="#">HTML Template</a></li>
+            </ul>
+        </li>
+        <li class="features">
+            <h2>Useful Links</h2>
+
+            <ul class="box">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Sales</a></li>
+                <li><a href="#">Tickets</a></li>
+                <li><a href="#">Customer Service</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>Address</h2>
+
+            <ul class="box">
+                <li><a href="#">8 ibnou khatima</a></li>
+                <li><a href="#">Rue Les Hopitaux</a></li>
+                <li><a href="#">Casablanca</a></li>
+                <li><a href="#">Maroc</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="footer-bottom">
+        <p>All Rights Reserved By &copy;Velocity 2021</p>
+        <img class="footer-dark-mode" src="{{url("images/sun.png")}}" id="icon">
+    </div>
+</footer>
+<script>
+    var icon = document.getElementById("icon");
+
+    let localData = localStorage.getItem("theme");
+
+    if(localData == "light"){
+        icon.src = "{{url("images/moon.png")}}";
+        document.body.classList.remove("light-mode");
+    }
+    else if(localData == "dark"){
+        icon.src = "{{url("images/sun.png")}}";
+              document.body.classList.remove("light-mode");
+    }
+
+     localStorage.setItem("theme" , "light");
+
+     icon.onclick = function() {
+         document.body.classList.toggle("light-mode");
+         if(document.body.classList.contains("light-mode")){
+             icon.src = "{{url("images/moon.png")}}"
+             localStorage.setItem("theme" , "light");
+         }
+         else{
+             icon.src = "{{url("images/sun.png")}}"
+             localStorage.setItem("theme" , "dark");
+         }
+     }
+ </script>
+<style>
+    .content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #dd4b39;
+    }
+    svg.w-8.h-8.text-gray-500 {
+        width: 30px;
+        margin: 2%;
+        display: flex;
+    }
+    .flex.items-center{
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .mt-5.space-y-6 {
+        margin-bottom: 2%;
+    }
+    .ml-3 {
+        margin-left: 3%;
+    }
+    button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin-top: 2%;
+        background: rgb(255, 183, 0);
+        color: white;
+        padding: 1% 3%;
+        border: none;
+        border-radius: 15px;
+        transition: 0.3s ease-in-out;
+        font-size: 1rem;
+    }
+    button:hover{
+        transform: scale(1.1);
+    }
+</style>
