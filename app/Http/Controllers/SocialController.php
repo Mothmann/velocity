@@ -38,7 +38,7 @@ class SocialController extends Controller
 
                 Auth::login($createUser);
 
-                return redirect('/dashboard');
+                return redirect('/');
             }
 
         } catch (Exception $exception) {
@@ -58,7 +58,7 @@ class SocialController extends Controller
             if ($isUser) {
                 Auth::login($isUser);
 
-                return redirect('/dashboard');
+                return redirect('/');
             } else {
                 $createUser = User::create([
                     'name' => $user->name,
@@ -70,7 +70,7 @@ class SocialController extends Controller
 
                 Auth::login($createUser);
 
-                return redirect('/dashboard');
+                return redirect('/');
             }
 
         } catch (Exception $exception) {

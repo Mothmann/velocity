@@ -39,7 +39,7 @@
             <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                 <i class="fas fa-user-alt"></i></a></li>
 
-        <li><a href="{{url("/tickets")}}"><i class="fas fa-ticket-alt"></i></a></li>
+        <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         <div>
             @if (auth()->user()->role_id == 2)
                 <li><a><x-jet-nav-link class="active" href="{{ route('admin.admin.index') }}" :active="request()->routeIs('admin')">
