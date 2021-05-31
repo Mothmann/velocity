@@ -104,30 +104,38 @@
         <div class="col-2">
             <div class="boxe">
                <div class="trips">
-                    @foreach ($trips as $trip)
-                       <div class="infos">
-                           <div class="info-center">
-                               <h3 class="text-info">
-                                  <a herf="{{ route ('trip.show',$trip->id) }}" class="link">
-                                        {{$trip->Departure_city}}-{{$trip->Arrival_city}}
-                                  </a>
-                               </h3>
-                               <p class="info">
-                                   <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
-                                   <span class="price">{{$trip->price}} dh</span>
+                       @php
+                           $total=0;
+                       @endphp
+                        @foreach ($trips as $trip)
+                       <form action="{{route('paypal_call')}}" method="post">
+                           <div class="infos">
+                               <div class="info-center">
+                                   <h3 class="text-info">
+                                      <a herf="{{ route ('trip.show',$trip->id) }}" class="link">
+                                            {{$trip->Departure_city}}-{{$trip->Arrival_city}}
+                                      </a>
+                                   </h3>
+                                   @php
+                                       $total = $trip->price /10;
+                                        echo $total;
+                                   @endphp
+                                   <p class="info">
+                                       <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
+                                       <span class="price">{{$trip->price}} Dhs</span>
+                               </div>
+                               @csrf
+                               <div class="row">
+                                   <input type="hidden" name="amount" value="{{ $total }}">
+                                   <button type="submit">pay now</button>
+                               </div>
+                   </form>
                            </div>
-                       </div>
-                    @endforeach
-               </div>
+                        @endforeach
+            </div></div>
            </div>
        </div>
     </div>
-    <form action="{{route('paypal_call')}}" method="post">
-        @csrf
-        <div class="row">
-            <button type="submit">pay now</button>
-        </div>
-    </form>
 
 
     <footer class="footer">

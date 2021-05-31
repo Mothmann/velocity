@@ -18,7 +18,7 @@ class PaypalController extends Controller
         $payer->setPaymentMethod('paypal');
 
         $amount = new \PayPal\Api\Amount();
-        $amount->setTotal('10.00');
+        $amount->setTotal($request->get('amount'));
         $amount->setCurrency('USD');
 
         $transaction = new \PayPal\Api\Transaction();
