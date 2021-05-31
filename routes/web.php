@@ -51,3 +51,6 @@ Route::get('auth/facebook', [SocialController::class, 'facebookRedirect'])->name
 Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook']);
 Route::get('auth/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
 Route::get('auth/google/callback', [SocialController::class, 'loginWithGoogle']);
+Route::post('/paypal',[\App\Http\Controllers\PaypalController::class,'index'])->name('paypal_call');
+Route::get('/paypal/return', [\App\Http\Controllers\PaypalController::class,'paypalReturn'])->name('paypal_return');
+Route::get('/paypal/cancel', [\App\Http\Controllers\PaypalController::class,'paypalCancel'])->name('paypal_cancel');

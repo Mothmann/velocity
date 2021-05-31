@@ -96,6 +96,7 @@
                 <input type="text" name="search4" id="" class="form-control" placeholder="search...">
             </div>
                 <button class="btn"type="submit" >search</button>
+            </form>
         </div>
     </div>
     <h3 style="color: rgb(255,183,0);letter-spacing:2px; text-align:center;font-weight:700;font-size:3rem;margin:2% 0">Trips</h3>
@@ -121,6 +122,13 @@
            </div>
        </div>
     </div>
+    <form action="{{route('paypal_call')}}" method="post">
+        @csrf
+        <div class="row">
+            <button type="submit">pay now</button>
+        </div>
+    </form>
+
 
     <footer class="footer">
         <div class="footer-left">
