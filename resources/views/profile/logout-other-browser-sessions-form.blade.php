@@ -1,3 +1,4 @@
+<body>
 <x-jet-action-section>
     <x-slot name="title">
         <div class="title">
@@ -99,6 +100,7 @@
         </x-jet-dialog-modal>
     </x-slot>
 </x-jet-action-section>
+</body>
 <footer class="footer">
     <div class="footer-left">
         <img src="{{url("images/logo2.png")}}" alt="">
@@ -180,6 +182,9 @@
      }
  </script>
 <style>
+    .light-mode .title{
+        color: rgb(34, 34, 34)
+    }
     .content{
         display: flex;
         justify-content: center;

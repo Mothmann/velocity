@@ -8,7 +8,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
-
     <div class="middle">
         <div class="contenu">
             <div class="laravel">
@@ -17,7 +16,7 @@
                 </div>
                 <div class="text">
                     <p>
-                       Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
+                        Welcome to Your Velocity dashboard! here you can see a full documentation of the features you can use.
                     </p>
                 </div>
             </div>
@@ -25,36 +24,40 @@
         <div class="flex">
             <div class="half1">
                 <div class="offers">
-                    <div class="documentation"><i class="fas fa-book-open"></i>Documentation</div>
+                    <div class="documentation"><i class="fas fa-user"></i>Profile</div>
                         <p>
-                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            To check or modify Your Profile information (Name, Email, password…), click on the link below.
                         </p>
+                        <a href="/user/profile">Click Here :</a>
                 </div>
             </div>
 
             <div class="half2">
                 <div class="offers">
-                    <div class="documentation"><i class="fas fa-book-open"></i>Documentation</div>
+                    <div class="documentation"><i class="fas fa-file-signature"></i>Contact Us</div>
                         <p>
-                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            If you have any problem with reservation or payment method, or you want to report a bug you can contact us.
                         </p>
+                        <a href="/contact">Click Here :</a>
                 </div>
             </div>
             <div class="half1">
                 <div class="offers">
-                    <div class="documentation"><i class="fas fa-book-open"></i>Documentation</div>
+                    <div class="documentation"><i class="fas fa-window-close"></i>Cancel Purchase</div>
                         <p>
-                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            If the purchase is made by mistake it may be canceled.
                         </p>
+                        <a href="/contact">Click Here :</a>
                 </div>
             </div>
 
             <div class="half2">
                 <div class="offers">
-                    <div class="documentation"><i class="fas fa-book-open"></i>Documentation</div>
+                    <div class="documentation"><i class="fas fa-ticket-alt"></i>Buy Tickets</div>
                         <p>
-                            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            To buy a ticket, click the link below.
                         </p>
+                        <a href="/trip">Click Here :</a>
                 </div>
             </div>
         </div>
@@ -118,6 +121,13 @@
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        color: rgb(255, 183, 0);
     }
     .middle .contenu .laravel .text{
         display: flex;
@@ -319,7 +329,21 @@
             display: block;
         }
     }
-
+    .light-mode {
+        background-color: rgb(216, 216, 216);
+        color: rgb(34,34,34);
+        transition: 0.3s linear;
+    }
+    .light-mode .section i , .light-mode hr{
+        border-color: rgb(34,34,34)
+    }
+    .light-mode .footer-left p , .light-mode .footer h2{
+        color: white;
+    }
+    .light-mode .middle , .light-mode .lower-body{
+        background-color: rgb(216, 216, 216);
+        transition: 0.3s linear;
+    }
 </style>
 <script>
     var icon = document.getElementById("icon");
@@ -327,24 +351,23 @@
     let localData = localStorage.getItem("theme");
 
     if(localData == "light"){
-        icon.src = "images/moon.png";
+        icon.src = "{{url("/images/moon.png")}}";
         document.body.classList.remove("light-mode");
     }
     else if(localData == "dark"){
-        icon.src = "images/sun.png";
+        icon.src = "{{url("/images/sun.png")}}";
               document.body.classList.remove("light-mode");
     }
-
      localStorage.setItem("theme" , "light");
 
      icon.onclick = function() {
          document.body.classList.toggle("light-mode");
          if(document.body.classList.contains("light-mode")){
-             icon.src = "images/moon.png"
+             icon.src = "{{url("/images/moon.png")}}"
              localStorage.setItem("theme" , "light");
          }
          else{
-             icon.src = "images/sun.png"
+             icon.src = "{{url("/images/sun.png")}}"
              localStorage.setItem("theme" , "dark");
          }
      }

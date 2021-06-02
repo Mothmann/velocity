@@ -49,17 +49,24 @@
                     </form>
                     @else
                     <div class="dropdown">
-                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
                         <div class="dropdown-content">
-                        <li><a class="active" href="{{ route('login') }}">Log in</a></li>
-                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                        <li><a class="login" href="{{ route('login') }}" style="color: rgb(255,183,0)">Log in</a></li>
+                        <div class="sign-in">
+                            <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt" style="color: rgb(255,183,0)"></i></a></li>
+                        </div>
+                        <li><a class="register" href="{{ route('register') }}" >Register</a></li>
+                        <div class="reg">
+                            <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a></li>
+                        </div>
                     </div>
                 </div>
                     @endif
 
-            <li><a href="{{url("/tickets")}}"><i class="fas fa-ticket-alt"></i></a></li>
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
+    <div class="empty"></div>
     <x-guest-layout>
         <x-jet-authentication-card>
             <x-slot name="logo">
@@ -76,7 +83,6 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-            <div class="empty"></div>
             <div class="header">
                 <div class="main-header">
                     <h1>Login</h1>
@@ -125,7 +131,7 @@
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+            <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -173,15 +179,6 @@
             <p>All Rights Reserved By &copy;Velocity 2021</p>
             <img class="footer-dark-mode" src="images/sun.png" id="icon">
         </div>
-
-        <div class="languages">
-            @foreach(config()->get('app.locales') as $code => $lang)
-                <a href="http://{{$code}}.localhost:8000/login">{{ $lang }}</a>
-            @endforeach
-        </div>
-
-
-
     </footer>
 
 <script>
@@ -216,6 +213,33 @@
 </html>
 
 <style>
+    .socials{
+        display: flex;
+    }
+    nav{
+        margin-bottom: 5rem
+    }
+    .social-media{
+        margin-bottom: 25%;
+    }
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: rgb(34,34,34);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        min-width: 160px;
+        padding: 12px 16px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
     .\}\}\<\/div\>.\<ul.class\={
         color: #dd4b39;
         text-align: center;
@@ -224,49 +248,48 @@
     }
 
     /*navigation css with resonsive*/
-nav{
-    display: flex;
-    height: 10vh;
-    width: 100%;
-    background: rgb(34,34,34);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px 0 100px;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
-}
-nav .logo{
-    color: rgb(255,183,0);
-    font-size: 35px;
-    font-weight: 600;
-    z-index: 1;
-}
-nav .logo img{
-    max-width: 120px;
-    display: flex;
-}
-nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-}
-nav ul li{
-    margin: 0 5px;
-}
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-nav ul li a.active,
-nav ul li a:hover{
-    color: rgb(255,183,0);
-}
+    nav{
+        background: rgb(34,34,34);
+        display: flex;
+        height: 10vh;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+    }
+    nav .logo{
+        color: rgb(255,183,0);
+        font-size: 35px;
+        font-weight: 600;
+        z-index: 1;
+    }
+    nav .logo img{
+        max-width: 120px;
+        display: flex;
+    }
+    nav ul{
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    nav ul li{
+        margin: 0 5px;
+    }
+    nav ul li a{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        color: rgb(255,183,0);
+    }
 nav .menu-btn i{
     color: #fff;
     font-size: 22px;
@@ -291,35 +314,58 @@ nav .menu-btn i{
     nav{
         padding: 0 40px 0 50px;
     }
+    .empty{
+        height: 10rem;
+        display: block;
+    }
 }
-
+@media (max-width: 768px){
+    .empty{
+        height: 11rem;
+        display: block;
+    }
+}
+@media (max-width: 320px){
+    .header{
+        width: 90%;
+        margin: auto;
+    }
+    .empty{
+        height: 12rem;
+    }
+}
 @media (max-width: 920px) {
     .\}\}\<\/div\>.\<ul.class\={
         padding-top: 15%;
     }
+    .login , .register{
+        display: none;
+    }
+    .sign-in , .reg{
+        display: block;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    nav .dropdown-content {
+        position: inherit;
+        display: block;
+        background: #111;
+    }
     nav{
         position: fixed;
     }
-    nav .menu-btn i{
-        display: block;
-    }
-    .main-header{
-        margin-top: 15%;
-    }
-    .fuck{
+    .fausr{
         display: none;
     }
     nav .dropdown-content{
         display: contents;
+        padding: 0;
+    }
+    nav .menu-btn i{
+        display: block;
+
 
 }
 @media (max-width: 480px){
-    .main-header h3{
-        font-weight: 400;
-    }
-    .main-header h1{
-        font-weight: 500;
-    }
     .rm{
         float: none;
     }
@@ -329,7 +375,6 @@ nav .menu-btn i{
     .remember{
         text-align: center;
         align-items: center;
-        display: -webkit-inline-box;
     }
     .main-header input[type=checkbox]{
         margin-top: 4%;

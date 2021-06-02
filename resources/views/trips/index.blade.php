@@ -40,7 +40,7 @@
                         <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
                         <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                             <i class="fas fa-user-alt"></i></a></li>
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form class="x" method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <li><a  href="{{ route('logout') }}"
@@ -60,13 +60,14 @@
             <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt" style="color: rgb(255,183,0)"></i></a></li>
         </ul>
     </nav>
+    <div class="empty"></div>
     <div class="container">
         <div class="container-time">
             @include('includes.messages')
             <h2 class="heading">Booking</h2>
             <h3 class="heading-days">Book your train tickets</h3>
             <p>from the comfort of your home</p>
-            <p>n just a few clicks</p>
+            <p>in just a few clicks</p>
             <h3 class="heading-days">No More Waiting</h3>
             <p>You no longer have to wait in long queues for Velocity ticket booking</p>
             <p>since online railway reservation is now easy, quick and secure with Velocity online reservation</p>
@@ -116,10 +117,13 @@
                                             {{$trip->Departure_city}}-{{$trip->Arrival_city}}
                                       </a>
                                    </h3>
-                                   @php
+                                   <h3 class="dollar">
+                                    @php
                                        $total = $trip->price /10;
                                         echo $total;
                                    @endphp
+                                   </h3>
+
                                    <p class="info">
                                        <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
                                        <span class="price">{{$trip->price}} Dhs</span>
@@ -271,6 +275,35 @@
     font-size: 30px;
 
 }
+.dollar{
+    display: none;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.row button{
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 3%;
+    border-radius: 5px;
+    background: rgb(255,183,0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.row button:hover{
+    transform: scale(1.1);
+}
+form.x{
+    display: block;
+}
+.trips{
+    margin-bottom: 5%;
+}
 .boxe{
     width: -webkit-fill-available;
     margin: auto;
@@ -288,7 +321,8 @@ h3.text-info {
     color: white;
 }
 .container-form h2{
-    color: rgb(255,183,0)
+    color: rgb(255,183,0);
+    text-align: center;
 }
 form {
     display: grid;
@@ -296,6 +330,7 @@ form {
 }
 form p {
     font-weight: 600;
+    text-align: center;
 }
 .form-field {
     display: flex;
@@ -306,7 +341,8 @@ form p {
 input,select {
     padding: 10px 15px;
     border: 2px solid rgb(255,183,0);
-    border-bottom: 5px solid rgb(255,183,0)
+    border-bottom: 5px solid rgb(255,183,0);
+    border-radius: 5px;
 }
 .btn {
     background-color: rgb(255,183,0);
@@ -384,12 +420,13 @@ input,select {
         margin: auto;
     }
     form p{
-        display: block;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
     }
-    input,select{
-        width: 60%;
-        margin: inherit;
-    }
+
 }
         /*navigation css with resonsive*/
 nav{
@@ -474,9 +511,11 @@ nav .menu-btn i{
     nav .menu-btn i{
         display: block;
     }
+    nav{
+        position: fixed;
+    }
     .empty{
     height: 10rem;
-    background: rgb(34,34,34);
 }
 @media (max-width: 480px){
     .main-header h3{
@@ -679,7 +718,7 @@ footer{
            background-color:rgb(255,149,0) ;
         }
        .trips{
-          background: rgb(34,34,34);
+
           color: rgb(255,183,0);
         }
         .row-1{
@@ -709,6 +748,7 @@ footer{
           box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
           border-radius: 20px;
           border: rgb(42, 41, 41) 1px solid;
+          background: rgb(34 34 34);
         }
        .info{
           display:flex;

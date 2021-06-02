@@ -35,7 +35,7 @@
         </label>
         <ul>
             <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
-            <li><a class="active" href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
+            <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature" style="color: rgb(255,183,0)"></i></a></li>
                     @if (Auth::check())
                         <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
                         <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
@@ -49,10 +49,16 @@
                     </form>
                     @else
                     <div class="dropdown">
-                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
                         <div class="dropdown-content">
-                        <li><a href="{{ route('login') }}">Log in</a></li>
-                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                        <li><a class="login" href="{{ route('login') }}">Log in</a></li>
+                        <div class="sign-in">
+                            <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
+                        </div>
+                        <li><a class="register" href="{{ route('register') }}" >Register</a></li>
+                        <div class="reg">
+                            <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a></li>
+                        </div>
                     </div>
                 </div>
                     @endif
@@ -208,7 +214,43 @@
 </body>
 </html>
 <style>
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
 
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: rgb(34,34,34);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        min-width: 160px;
+        padding: 12px 16px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
     section{
         display: flex;
         justify-content: center;
@@ -220,7 +262,7 @@
         min-width: 1100px;
         min-height: 550px;
         display: flex;
-        z-index: 1;
+        z-index: -1;
     }
     .container .contactInfo{
         position: absolute;
@@ -451,67 +493,75 @@
         margin-top: 5%;
     }
     nav{
-    display: flex;
-    height: 10vh;
-    width: 100%;
-    background: rgb(34,34,34);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px 0 100px;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
+        background: rgb(34,34,34);
+        display: flex;
+        height: 10vh;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
     }
-nav .logo{
-    color: rgb(255,183,0);
-    font-size: 35px;
-    font-weight: 600;
-    z-index: 1;
-}
-nav .logo img{
-    max-width: 120px;
-    display: flex;
-}
-nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-}
-nav ul li{
-    margin: 0 5px;
-}
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    nav .logo{
+        color: rgb(255,183,0);
+        font-size: 35px;
+        font-weight: 600;
+        z-index: 1;
+    }
+    nav .logo img{
+        max-width: 120px;
+        display: flex;
+    }
+    nav ul{
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    nav ul li{
+        margin: 0 5px;
+    }
+    nav ul li a{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        color: rgb(255,183,0);
     }
 @media (max-width: 920px){
-    .fuck{
+    .login , .register{
+            display: none;
+        }
+        .sign-in , .reg{
+            display: block;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    nav .dropdown-content {
+        position: inherit;
+        display: block;
+        background: #111;
+    }
+    nav{
+        position: fixed;
+    }
+    .fausr{
         display: none;
     }
     nav .dropdown-content{
         display: contents;
+        padding: 0;
     }
-}
-    .dropdown-content{
-        display: none;
-        position: absolute;
-        background-color: rgb(34,34,34);
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        min-width: 160px;
-        padding: 12px 16px;
-    }
-    .dropdown:hover .dropdown-content {
+    nav .menu-btn i{
         display: block;
     }
-nav ul li a.active,
-nav ul li a:hover{
-    color: rgb(255,183,0);
 }
+
 nav .menu-btn i{
     color: #fff;
     font-size: 22px;
@@ -536,8 +586,7 @@ nav .menu-btn i{
         display: block;
     }
     .empty{
-    height: 10rem;
-    background: rgb(34,34,34);
+        height: 10rem;
 }
 @media (max-width: 480px){
     .main-header h3{

@@ -47,10 +47,16 @@
                         </form>
                         @else
                         <div class="dropdown">
-                            <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                            <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
                             <div class="dropdown-content">
-                            <li><a href="{{ route('login') }}">Log in</a></li>
-                            <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                            <li><a class="login" href="{{ route('login') }}">Log in</a></li>
+                            <div class="sign-in">
+                                <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
+                            </div>
+                            <li><a class="register" href="{{ route('register') }}" >Register</a></li>
+                            <div class="reg">
+                                <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a></li>
+                            </div>
                         </div>
                     </div>
                         @endif
@@ -66,7 +72,7 @@
                             Your browser does not support HTML5 video.
                           </video>
                         <div class="h1">
-                            <h1>This Is Velocity</h1>
+                            <h1> {{ __('Welcome To Velocity') }} </h1>
                         </div>
                         <div class="slogan">
                             <h3>In Touch With Tomorrow.</h3>
@@ -79,8 +85,8 @@
 
                 <div class="middle" id="middle">
                         <div class="welcome">
-                            <h1>Welcome To Velocity.</h1>
-                            <p style="font-size: 2rem">Your Satisfaction Is Our Priority.</p>
+                            <h1> {{ __('Velocity ') }} </h1>
+                            <p style="font-size: 2rem"> {{ __('Your Satisfaction Is Our Priority') }}</p>
 
                         </div>
 
@@ -208,6 +214,12 @@
                     </div>
                 </footer>
 <style>
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
+    }
     .dropdown-content{
         display: none;
         position: absolute;
@@ -309,8 +321,6 @@
         border-color: white;
         border-width: 0.3rem;
     }
-
-
     .button a{
         color: white;
         padding: 0.5rem 1.5rem;
@@ -595,24 +605,36 @@
     }
 
     @media (max-width: 920px) {
-
+        .login , .register{
+            display: none;
+        }
+        .sign-in , .reg{
+            display: block;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    nav .dropdown-content {
+        position: inherit;
+        display: block;
+        background: #111;
+    }
     nav{
         position: fixed;
     }
-    .fuck{
+    .fausr{
         display: none;
     }
     nav .dropdown-content{
         display: contents;
+        padding: 0;
     }
     nav .menu-btn i{
         display: block;
     }
     .col p{
-            font-size: 80%;
-            padding-left: 2%;
-            padding-right: 2%;
-        }
+        font-size: 80%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
 
     @media (max-width: 512px){
         .content h1{
@@ -631,15 +653,10 @@
         .section i{
             font-size: 3rem;
             padding: 3%;
-
         }
-
         .col h3{
             font-weight: 400;
         }
-
-
-
     }
 
     #click:checked ~ .menu-btn i:before{

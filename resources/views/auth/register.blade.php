@@ -49,15 +49,21 @@
                     </form>
                     @else
                     <div class="dropdown">
-                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
                         <div class="dropdown-content">
-                        <li><a href="{{ route('login') }}">Log in</a></li>
-                        <li><a class="active" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                        <li><a class="login" href="{{ route('login') }}">Log in</a></li>
+                        <div class="sign-in">
+                            <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
+                        </div>
+                        <li><a class="register" href="{{ route('register') }}" style="color: rgb(255,183,0)">Register</a></li>
+                        <div class="reg">
+                            <li><a href="{{ route('register') }}"><i class="fas fa-user-plus" style="color: rgb(255,183,0)"></i></a></li>
+                        </div>
                     </div>
                 </div>
                     @endif
 
-            <li><a href="{{url("/tickets")}}"><i class="fas fa-ticket-alt"></i></a></li>
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
     <div class="title">Registration</div>
@@ -135,7 +141,7 @@
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+            <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -213,6 +219,23 @@
          }
      </script>
 <style>
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: rgb(34,34,34);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        min-width: 160px;
+        padding: 12px 16px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 .light-mode {
     background-color: rgb(216, 216, 216);
     color: rgb(34,34,34);
@@ -321,52 +344,54 @@
         width: 100%;
     }
     .body{
-        height: 100vh;
+        height: 60vh;
+    }
+    .title{
+        padding-top: 25%
     }
 }
-    nav{
-    display: flex;
-    height: 10vh;
-    width: 100%;
-    background: rgb(34,34,34);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px 0 100px;
-    flex-wrap: wrap;
-    margin-bottom: 5%;
-}
-nav .logo{
-    color: rgb(255,183,0);
-    font-size: 35px;
-    font-weight: 600;
-    z-index: 1;
-}
-nav .logo img{
+nav{
+        background: rgb(34,34,34);
+        display: flex;
+        height: 10vh;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+    }
+    nav .logo{
+        color: rgb(255,183,0);
+        font-size: 35px;
+        font-weight: 600;
+        z-index: 1;
+    }
+    nav .logo img{
         max-width: 120px;
         display: flex;
     }
-nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-}
-nav ul li{
-    margin: 0 5px;
-}
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-nav ul li a.active,
-nav ul li a:hover{
-    color: rgb(255,183,0);
-}
+    nav ul{
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    nav ul li{
+        margin: 0 5px;
+    }
+    nav ul li a{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        color: rgb(255,183,0);
+    }
 nav .menu-btn i{
     color: #fff;
     font-size: 22px;
@@ -397,21 +422,34 @@ nav .menu-btn i{
 }
 
 @media (max-width: 920px) {
-    .fuck{
+    .title{
+        padding-top: 15%;
+    }
+    .login , .register{
+            display: none;
+        }
+        .sign-in , .reg{
+            display: block;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    nav .dropdown-content {
+        position: inherit;
+        display: block;
+        background: #111;
+    }
+    nav{
+        position: fixed;
+    }
+    .fausr{
         display: none;
     }
     nav .dropdown-content{
         display: contents;
-    }
-    nav{
-        z-index: 2;
+        padding: 0;
     }
     nav .menu-btn i{
         display: block;
-    }
-    .empty{
-    height: 10rem;
-    background: rgb(34,34,34);
+
 }
 @media (max-width: 480px){
     .main-header h3{

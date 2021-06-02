@@ -35,15 +35,21 @@
                     </form>
                     @else
                     <div class="dropdown">
-                        <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
                         <div class="dropdown-content">
-                        <li><a href="{{ route('login') }}">Log in</a></li>
-                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
+                        <li><a class="login" href="{{ route('login') }}">Log in</a></li>
+                        <div class="sign-in">
+                            <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
+                        </div>
+                        <li><a class="register" href="{{ route('register') }}" >Register</a></li>
+                        <div class="reg">
+                            <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a></li>
+                        </div>
                     </div>
                 </div>
                     @endif
 
-            <li><a href="{{url("/tickets")}}"><i class="fas fa-ticket-alt"></i></a></li>
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
     <div class="empty"></div>
@@ -206,6 +212,12 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     color: white;
+    }
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
     }
     li.fuck:hover{
         color: rgb(255,183,0);
@@ -703,6 +715,318 @@ footer{
             flex: 2 0px;
         }
         .col p{
+            font-size: 1.5rem;
+        }
+    }
+    .login , .register{
+        display: block;
+    }
+    .sign-in , .reg{
+        display: none;
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: rgb(34,34,34);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        min-width: 160px;
+        padding: 12px 16px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .light-mode {
+        background-color: rgb(216, 216, 216);
+        color: rgb(34,34,34);
+        transition: 0.3s linear;
+    }
+    .light-mode .section i , .light-mode hr{
+        border-color: rgb(34,34,34)
+    }
+    .light-mode .footer-left p , .light-mode .footer h2{
+        color: white;
+    }
+    .light-mode .middle , .light-mode .lower-body{
+        background-color: rgb(216, 216, 216);
+        transition: 0.3s linear;
+    }
+    hr{
+        background: lightgray;
+        width: 80%;
+        height: 2px;
+        display: block;
+        right: 50%;
+        margin: auto;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        height: 3px;
+    }
+
+    .lower-body{
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        background: rgb(34,34,34);
+    }
+
+    .lower-body h2{
+        margin-bottom: 3%;
+        padding-top: 3%;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+    .content h1{
+    color: rgb(255,183,0);
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 5px;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    }
+
+    body{
+        background: rgb(34,34,34);
+        color: white;
+        transition: 0.3s linear !important;
+    }
+    .welcome h1{
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 3px;
+        font-size: 40px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2%;
+        padding-top: 3%;
+    }
+    .middle{
+        background: rgb(34,34,34);
+    }
+    .welcome p{
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: 3px;
+        font-size: 15px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3%;
+    }
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: -1;
+    }
+    /*footer*/
+    footer{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 50px;
+        padding-bottom: 1%;
+        background: rgb(34,34,34);
+    }
+
+    .footer > *{
+        flex: 1 100%;
+    }
+    .footer-left{
+        margin-right: 1.25em;
+        margin-bottom: 2em;
+
+    }
+    .footer-left img{
+        width: 50%;
+    }
+
+    .footer h2{
+        font-weight: 600;
+        font-size: 17px;
+    }
+
+    .footer ul{
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .footer li{
+        line-height: 2em;
+        margin-top: 1%;
+    }
+
+    .footer a{
+        text-decoration: none;
+    }
+    .footer-right{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .footer-right > * {
+        flex: 1 50%;
+        margin-right: 1.25en;
+    }
+
+    .box a {
+        color: #999;
+    }
+
+    .footer-bottom{
+        text-align: center;
+        color: #999;
+        padding-top: 50px;
+    }
+
+    .footer-left p{
+        padding-right: 20%;
+    }
+
+    .footer-dark-mode {
+        width: 30px;
+        cursor: pointer;
+        margin-top: 2%;
+    }
+
+    .socials a i{
+        color: #e7f2f4;
+        padding: 10px 12px;
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: 600px) {
+        .footer-right > * {
+            flex: 1;
+        }
+        .footer-left{
+            flex: 1 0px;
+        }
+        .footer-right{
+            flex: 2 0px;
+        }
+        .col p{
+            font-size: 1.5rem;
+        }
+    }
+    nav .menu-btn i{
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    input[type="checkbox"]{
+        display: none;
+    }
+    @media (max-width: 1000px){
+    nav{
+        padding: 0 40px 0 50px;
+    }
+    }
+
+    @media (max-width: 920px) {
+    .login , .register{
+        display: none;
+    }
+    .sign-in , .reg{
+        display: block;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    nav .dropdown-content {
+        position: inherit;
+        display: block;
+        background: #111;
+    }
+    nav{
+        position: fixed;
+    }
+    .fausr{
+        display: none;
+    }
+    nav .dropdown-content{
+        display: contents;
+        padding: 0;
+    }
+    nav .menu-btn i{
+        display: block;
+    }
+    #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+        z-index: 2;
+    }
+    nav ul,a.loreg{
+        position: fixed;
+        top: 10vh;
+        left: -100%;
+        background: #111;
+        height: 90vh;
+        width: 100vw;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        opacity: 0.9;
+    }
+    #click:checked ~ ul{
+        left: 0;
+    }
+    nav ul li{
+        width: 100%;
+        margin: 20px 0;
+    }
+    nav ul li a{
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    #click:checked ~ ul li a{
+        margin-left: 0px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        background: none;
+        color: rgb(255,183,0);
+    }
+    }
+    #test{
+        height: 90vh ;
+        width: 100% ;
+        z-index: 1;
+
+    }
+
+    @media screen and (max-width: 481px){
+        nav .logo{
             font-size: 1.5rem;
         }
     }

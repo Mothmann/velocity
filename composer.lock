@@ -1324,16 +1324,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v2.3.6",
+            "version": "v2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "c1f1f4e4a7a690eda215286e2e56bb8acd626160"
+                "reference": "05fa16096324a90299277a3a1a6a3de311f3f587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/c1f1f4e4a7a690eda215286e2e56bb8acd626160",
-                "reference": "c1f1f4e4a7a690eda215286e2e56bb8acd626160",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/05fa16096324a90299277a3a1a6a3de311f3f587",
+                "reference": "05fa16096324a90299277a3a1a6a3de311f3f587",
                 "shasum": ""
             },
             "require": {
@@ -1387,7 +1387,7 @@
                 "issues": "https://github.com/laravel/jetstream/issues",
                 "source": "https://github.com/laravel/jetstream"
             },
-            "time": "2021-05-18T15:34:01+00:00"
+            "time": "2021-06-01T15:46:41+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -5879,16 +5879,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "69742118c037f34ee1ef86dc605be4a105d9e984"
+                "reference": "47b639dc02bcfdfc4ebb83de703856fa01e35f5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/69742118c037f34ee1ef86dc605be4a105d9e984",
-                "reference": "69742118c037f34ee1ef86dc605be4a105d9e984",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/47b639dc02bcfdfc4ebb83de703856fa01e35f5f",
+                "reference": "47b639dc02bcfdfc4ebb83de703856fa01e35f5f",
                 "shasum": ""
             },
             "require": {
@@ -5932,7 +5932,7 @@
             ],
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
-                "source": "https://github.com/facade/flare-client-php/tree/1.8.0"
+                "source": "https://github.com/facade/flare-client-php/tree/1.8.1"
             },
             "funding": [
                 {
@@ -5940,7 +5940,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-30T11:11:50+00:00"
+            "time": "2021-05-31T19:23:29+00:00"
         },
         {
             "name": "facade/ignition",
