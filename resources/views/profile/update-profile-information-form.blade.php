@@ -62,6 +62,7 @@
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
+        text-align: center;
     }
     .form{
         display: flex;
