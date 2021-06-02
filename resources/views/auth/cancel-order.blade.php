@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Velocity : Order Cancelled</title>
 </head>
 <body>
@@ -13,6 +14,7 @@
     <div class="description">
         {{ __('Your order has just been cancelled.') }}
     </div>
+    <div><a href="{{url("/")}}"><i class="fas fa-home"></i><h3>return to the home page</h3></a></div>
 
 </body>
 </html>

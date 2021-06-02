@@ -71,7 +71,7 @@ class PaypalController extends Controller
         }
     }
     public function paypalCancel(){
-        return "order canceled"; //here cancel view
+        return view('auth.cancel-order'); //here cancel view
     }
 
 }
