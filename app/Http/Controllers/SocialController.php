@@ -26,7 +26,7 @@ class SocialController extends Controller
             if ($isUser) {
                 Auth::login($isUser);
 
-                return redirect('/dashboard');
+                return redirect('/');
             } else {
                 $createUser = User::create([
                     'name' => $user->name,

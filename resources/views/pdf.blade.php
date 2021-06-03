@@ -63,7 +63,7 @@
                     <div class="table">
                         <head>
                             <div style="text-align:center;">
-                                <h2  class="divider-style"><span>Amount</span></h2>
+                                <h2 class="divider-style"><span>Amount</span></h2>
                             </div>
                         </head>
                         <div>

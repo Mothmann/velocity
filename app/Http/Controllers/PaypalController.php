@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ticket;
 use Illuminate\Http\Request;
 use PayPal\Api\PaymentExecution;
-namespace App\Http\Controllers;
-use App\Models\Ticket;
-use App\Models\Trip;
-
 
 class PaypalController extends Controller
 {
@@ -67,7 +64,7 @@ class PaypalController extends Controller
         try {
             $result = $payment->execute($execution, $apiContext);
             //dd($result);
-            return view('tickets.create'); //here redirect dompdf
+            return redirect()->action([addTicketController::class, 'pdf']); //here redirect dompdf
         } catch (\PayPal\Exception\PayPalConnectionException $ex) {
             echo $ex->getCode();
             echo $ex->getData();
@@ -78,9 +75,8 @@ class PaypalController extends Controller
         return view('auth.cancel-order'); //here cancel view
     }
     public function price(){
-        $tickets = Ticket::where('id', Ticket::raw("(select max(id)from tickets)"))
-        ->get();
-        return view('paynow');
+        $tickets = Ticket::orderBy('id', 'desc')->first();
+        return view('paynow')->with('tickets',$tickets);
     }
 }
 

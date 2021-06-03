@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:client', 'prefix' => 'client', 'as' => 'client.'], function() {
-        Route::resource('test', \App\Http\Controllers\TestController::class);
+
     });
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::get('/trip', 'App\Http\Controllers\addTripController@index')->name('admin.addtrip');

@@ -37,26 +37,15 @@ class addTicketController extends Controller
         return view('tickets.create')->with('trips',$trips);
 
     }
-    public function pdf(Request $request, Ticket $ticket)
+    public function pdf()
     {
 
             $tickets = Ticket::where('id', Ticket::raw("(select max(id)from tickets)"))
             ->get();
             view()->share('tickets',$tickets);
-            if($request->has('download')){ $pdf = PDF::loadView('pdf', $tickets);
-              $tickets = Ticket::select('email')->get();
-              Mail::send('pdf', ['tickets' => $tickets], function($message)use($tickets, $pdf) {
-              $message->from('noreply@velocity.ma', 'velocity')
-                     ->to($tickets->email)
-                     ->subject("tickets here!")
-                     ->attachData($pdf->output(),"tickets.pdf");
-        });
-
-             return $pdf->download('tickets.pdf'); }
+            $pdf = PDF::loadView('pdf', $tickets);
+             return $pdf->download('tickets.pdf');
              return view('pdf');
-
-
-
 
     }
 
@@ -112,7 +101,8 @@ class addTicketController extends Controller
             }
             $ticket->save();
 
-    return redirect()->route('tickets.create')->withSuccess('trip added');
+        return redirect()->action(
+            [PaypalController::class, 'price']);
 }
 
 

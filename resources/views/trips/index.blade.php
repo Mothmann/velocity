@@ -48,19 +48,7 @@
                     <i class="fas fa-user-alt"></i></a></li>
 
             <li><a class="active" href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
-            <div>
-                @if (auth()->user()->role_id == 2)
-                <div class="dropdown">
-                    <li class="dissapear"><x-jet-nav-link href="" :active="request()->routeIs('admin')">
-                        <i class="fas fa-users-cog"></i>
-                    </x-jet-nav-link></li></a>
-                    <div class="dropdown-content">
-                        <li><a href="{{ url('/admin/trip') }}"><i class="fas fa-suitcase"></i></a></li>
-                    <li><a href="{{ url('/admin/train') }}"><i class="fas fa-train"></i></a></li>
-                    <li><a href="{{ url('/admin/location') }}"><i class="fas fa-location-arrow"></i></a></li>
-                </div>
-                @endif
-            </div>
+
         </ul>
     </nav>
     <div class="empty"></div>
@@ -367,6 +355,7 @@ input,select {
     -moz-transition: all .3s;
     -ms-transition: all .3s;
     -o-transition: all .3s;
+    text-decoration: none;
 }
 
 .btn:hover {

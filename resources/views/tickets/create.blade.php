@@ -17,11 +17,48 @@
   @php
 //dd($trips);
 @endphp
-<nav>
-    <div class="logo">
-        <a href="{{url("/")}}"><img src="{{url("/images/logo2.png")}}" alt=""></a>
-    </div>
-</nav>
+  <nav>
+      <div class="logo">
+          <a href="{{url("/")}}"><img src="{{url("/images/logo2.png")}}" alt=""></a>
+      </div>
+      </div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+          <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
+          <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
+          @if (Auth::check())
+              <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+              <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                      <i class="fas fa-user-alt"></i></a></li>
+              <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+
+                  <li><a  href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                    this.closest('form').submit();"><i class="fas fa-power-off"></i></a></li>
+              </form>
+          @else
+              <div class="dropdown">
+                  <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
+                  <div class="dropdown-content">
+                      <li><a class="login" href="{{ route('login') }}">Log in</a></li>
+                      <div class="sign-in">
+                          <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
+                      </div>
+                      <li><a class="register" href="{{ route('register') }}" >Register</a></li>
+                      <div class="reg">
+                          <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a></li>
+                      </div>
+                  </div>
+              </div>
+          @endif
+
+          <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
+      </ul>
+  </nav>
 <div class="container">
     <div class="row my-5">
          <div class="col-md-8 mx-auto ">
@@ -99,7 +136,7 @@
                          @endif
                    <div class="modal-footer">
 
-                     <a href="{{url}}"><button  className="btn"  type="submit" class="btn btn-primary">confirme</button></a>
+                    <a className="btn" href="{{url("/paynow")}}"></a><button  className="btn"  type="submit" class="btn btn-primary">confirm</button></a>
                      <a className="btn" href="{{url("/trip")}}" class="btn btn-danger">Cancel</a>
                     </div>
                  </form>
