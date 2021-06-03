@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2021 at 07:32 PM
+-- Generation Time: Jun 03, 2021 at 05:15 PM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,14 +40,24 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- Table structure for table `locations`
 --
 
-CREATE TABLE `location` (
+CREATE TABLE `locations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `station` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `station` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `city`, `station`, `created_at`, `updated_at`) VALUES
+(5, 'Marrakech', 'ennassim', '2021-06-02 15:53:11', '2021-06-02 15:53:11'),
+(6, 'casa', 'ouaziz', '2021-06-02 16:01:46', '2021-06-02 16:01:46');
 
 -- --------------------------------------------------------
 
@@ -152,25 +162,44 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1eCbZUll7xEUExkIOkC3wgWpJG8SlynxM6McX9tL', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoidVE4SElrUW8wTHB3VEptdjdzcjN5bklaSzVNRFBKWTJSSTdxSW5CWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGZCR2xqMTR2SHJCZVdtbkNuRFlLUU9HeU9DVUV0Qld2Z211NThQNnVCM0lUcEVOSHA0eXNhIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRmQkdsajE0dkhyQmVXbW5DbkRZS1FPR3lPQ1VFdEJXdmdtdTU4UDZ1QjNJVHBFTkhwNHlzYSI7fQ==', 1622217311),
-('DywHUKT7kac1a4YARrddNtYjJd6VTVwrjKKJVNNG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOU5ZYWdJRjM4dGxGOWZaT2pqbmE5RVI1Tm1KNkdLVVE5c1g1WG5IbyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1622221516),
-('VwmCgfza0PnAnD27kFV7wBqJZGctmk4AoaC2ugSI', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoidnlkM2tJeVpFa3dVOUw4RTN1OEsyM3RLRDRrS0ZBcWJFOVNNcDZ4USI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGZCR2xqMTR2SHJCZVdtbkNuRFlLUU9HeU9DVUV0Qld2Z211NThQNnVCM0lUcEVOSHA0eXNhIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRmQkdsajE0dkhyQmVXbW5DbkRZS1FPR3lPQ1VFdEJXdmdtdTU4UDZ1QjNJVHBFTkhwNHlzYSI7fQ==', 1622217482),
-('vwZ1zy8kgNhzwGt141bYP3A5j4ZMLRyHBUvZJfDe', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidjl2YnJwM29hYmc1OUdyam9wNzZtRDl1aEVWOVh3Zk9vY0pYQTVnTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNTU5aWtpZkhPZDJsc2NqRHZyZEpZZUVjWGd1LmJOSXlDa2NYcGF3S3RpQWN0ckVQczdUd3EiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDU1OWlraWZIT2QybHNjakR2cmRKWWVFY1hndS5iTkl5Q2tjWHBhd0t0aUFjdHJFUHM3VHdxIjt9', 1622308883);
+('C3KU3gEdIVnV0iKnorXkBa9OInkwJBTq3PzN7QMp', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiTG5iZ0J0TjVseWhQR1FERGF2cVVqYU9LamxURWZIM0IwQWtkU0JKWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wZGY/ZG93bmxvYWQ9cGRmIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6OTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHguTkxqSkZ5S3ZSQlNpZGM5OFJVOU9udnFHWS9iZzlzaVhZLm1nWURiRzh5TFBRNWFzdjZ1IjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCR4Lk5MakpGeUt2UkJTaWRjOThSVTlPbnZxR1kvYmc5c2lYWS5tZ1lEYkc4eUxQUTVhc3Y2dSI7fQ==', 1622732206);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ticket`
+-- Table structure for table `tickets`
 --
 
-CREATE TABLE `ticket` (
+CREATE TABLE `tickets` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `trip_id` int(11) NOT NULL,
+  `Departure_city` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Arrival_city` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Departure_station` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Arrival_station` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `pdf_location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `user_id`, `name`, `email`, `trip_id`, `Departure_city`, `Arrival_city`, `Departure_station`, `Arrival_station`, `price`, `date`, `created_at`, `updated_at`) VALUES
+(1, 9, 'salma', 'salma.elyagoubi@ynov.com', 14, 'casa', 'Marrakech', 'ennassim', 'ouaziz', 10, '2021-06-17 18:12:00', '2021-06-02 20:47:17', '2021-06-02 20:47:17'),
+(2, 9, 'salma', 'salma.elyagoubi@ynov.com', 14, 'casa', 'Marrakech', 'ennassim', 'ouaziz', 10, '2021-06-17 18:12:00', '2021-06-02 20:48:08', '2021-06-02 20:48:08'),
+(3, 9, 'salma', 'salma.elyagoubi@ynov.com', 14, 'casa', 'Marrakech', 'ennassim', 'ouaziz', 10, '2021-06-17 18:12:00', '2021-06-02 20:48:25', '2021-06-02 20:48:25'),
+(4, 9, 'salma', 'salma.elyagoubi@ynov.com', 14, 'casa', 'Marrakech', 'ennassim', 'ouaziz', 10, '2021-06-17 18:12:00', '2021-06-02 20:48:30', '2021-06-02 20:48:30'),
+(5, 9, 'salma', 'salma.elyagoubi@ynov.com', 15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '2021-06-26 22:53:00', '2021-06-02 20:53:24', '2021-06-02 20:53:24'),
+(6, NULL, 'salma', 'gatsal99@gmail.com', 15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '2021-06-26 22:53:00', '2021-06-02 20:59:19', '2021-06-02 20:59:19'),
+(7, NULL, 'S E N E T', 'gatsal99@gmail.com', 15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '2021-06-26 22:53:00', '2021-06-02 21:00:11', '2021-06-02 21:00:11'),
+(8, NULL, 'pastries', 'gatsal99@gmail.com', 15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '2021-06-26 22:53:00', '2021-06-02 21:09:07', '2021-06-02 21:09:07'),
+(9, NULL, 'salma', 'gatsal99@gmail.com', 15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '2021-06-26 22:53:00', '2021-06-02 21:30:54', '2021-06-02 21:30:54');
 
 -- --------------------------------------------------------
 
@@ -181,9 +210,18 @@ CREATE TABLE `ticket` (
 CREATE TABLE `trains` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Max-capacity` int(11) NOT NULL,
-  `Driver` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `Max_capacity` int(11) NOT NULL,
+  `Driver` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp(5) NULL DEFAULT NULL,
+  `updated_at` timestamp(5) NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `trains`
+--
+
+INSERT INTO `trains` (`id`, `type`, `Max_capacity`, `Driver`, `created_at`, `updated_at`) VALUES
+(5, 'oncf', 140, 'hmed', '2021-06-02 15:53:03.00000', '2021-06-02 15:53:03.00000');
 
 -- --------------------------------------------------------
 
@@ -211,9 +249,7 @@ CREATE TABLE `trips` (
 --
 
 INSERT INTO `trips` (`id`, `Departure_city`, `Arrival_city`, `Departure_station`, `Arrival_station`, `price`, `Arrival_Time`, `Departure_Date`, `dispo`, `train_id`, `created_at`, `updated_at`) VALUES
-(1, 'Casablanca', 'Rabat', 'wertfertfserf', 'tgertgertfg', 500, '17:16:00', '2021-05-20 16:14:00', 0, 1, '2021-05-28 15:14:43', '2021-05-28 15:14:43'),
-(2, 'drtgdrtg', 'drtgdrtgrtg', 'rtgdrt', 'tgertg', 10, '17:18:00', '2021-05-19 18:16:00', 0, 1, '2021-05-28 15:16:37', '2021-05-28 15:16:37'),
-(5, 'trtertgggg', 'Rabat', 'wertfertfserf', 'tgertgertfg', 500, '20:52:00', '2021-04-28 17:52:00', 0, 1, '2021-05-28 15:52:08', '2021-05-28 15:52:08');
+(15, 'Marrakech', 'casa', 'ennassim', 'ouaziz', 10, '12:52:00', '2021-06-26 21:53:00', 0, 5, '2021-06-02 20:53:09', '2021-06-02 20:53:09');
 
 -- --------------------------------------------------------
 
@@ -244,10 +280,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `role_id`, `fb_id`, `google_id`) VALUES
-(2, 'client', 'client@gmail.com', '2021-04-30 22:23:59', '$2y$10$559ikifHOd2lscjDvrdJYeEcXgu.bNIyCkcXpawKtiActrEPs7Twq', NULL, NULL, NULL, NULL, NULL, '2021-04-10 15:02:57', '2021-04-10 15:02:57', 1, NULL, NULL),
-(5, 'admin', 'admin@gmail.com', '2021-04-30 22:24:02', '$2y$10$fBGlj14vHrBeWmnCnDYKQOGyOCUEtBWvgmu58P6uB3ITpENHp4ysa', NULL, NULL, NULL, NULL, NULL, '2021-04-10 15:39:40', '2021-04-10 15:39:40', 2, NULL, NULL),
+(2, 'client', 'client@gmail.com', '2021-04-30 22:23:59', '$2y$10$559ikifHOd2lscjDvrdJYeEcXgu.bNIyCkcXpawKtiActrEPs7Twq', NULL, NULL, NULL, NULL, NULL, '2021-04-10 14:02:57', '2021-04-10 14:02:57', 1, NULL, NULL),
+(5, 'admin', 'admin@gmail.com', '2021-04-30 22:24:02', '$2y$10$fBGlj14vHrBeWmnCnDYKQOGyOCUEtBWvgmu58P6uB3ITpENHp4ysa', NULL, NULL, NULL, NULL, NULL, '2021-04-10 14:39:40', '2021-04-10 14:39:40', 2, NULL, NULL),
 (6, 'Othman Lahlou', 'othman.lahlou00@gmail.com', '2021-04-30 23:21:02', 'eyJpdiI6Ii9zS0VUdTZYMVE2TzFSb0lCNHlaYmc9PSIsInZhbHVlIjoiR3JwVldsZDVqbVBUTm1hNm9CMFAxQT09IiwibWFjIjoiZjNmMmQ5NzQzZGMzYzE4NWE5OGM4NjI3Yzc1ZjFhNmQ2MWJkZGZiYzMzZmU0YTliM2JkNDk5ZGM0NTgyNWM5YSJ9', NULL, NULL, NULL, NULL, NULL, '2021-04-30 23:19:59', '2021-04-30 23:21:02', 1, '3732330223556651', NULL),
-(7, 'Martin Salas', 'velocitynoreply@gmail.com', '2021-04-30 23:53:51', 'eyJpdiI6ImtMTkgyRnlTbWpIK1A5QTZ2YmozQVE9PSIsInZhbHVlIjoiQmR3M1hKbEI4K3EyNmNiNnBvcXBNUT09IiwibWFjIjoiMzkzZTFmOTczZmFjMGQ3MDkyNDkwMzFiNWQyMTRkMDRlY2ZlYmYxNGIwNWZkNWJhYjZhZmMwNjI2MGJmNzg0MCJ9', NULL, NULL, NULL, NULL, NULL, '2021-04-30 23:53:10', '2021-04-30 23:53:51', 1, NULL, '114662276410183707935');
+(7, 'Martin Salas', 'velocitynoreply@gmail.com', '2021-04-30 23:53:51', 'eyJpdiI6ImtMTkgyRnlTbWpIK1A5QTZ2YmozQVE9PSIsInZhbHVlIjoiQmR3M1hKbEI4K3EyNmNiNnBvcXBNUT09IiwibWFjIjoiMzkzZTFmOTczZmFjMGQ3MDkyNDkwMzFiNWQyMTRkMDRlY2ZlYmYxNGIwNWZkNWJhYjZhZmMwNjI2MGJmNzg0MCJ9', NULL, NULL, NULL, NULL, NULL, '2021-04-30 23:53:10', '2021-04-30 23:53:51', 1, NULL, '114662276410183707935'),
+(9, 'salma', 'salma.elyagoubi@ynov.com', '2021-05-29 09:29:08', '$2y$10$x.NLjJFyKvRBSidc98RU9OnvqGY/bg9siXY.mgYDbG8yLPQ5asv6u', NULL, NULL, NULL, NULL, NULL, '2021-05-29 09:28:42', '2021-05-29 09:29:08', 2, NULL, NULL),
+(10, 'test', 'gatsal99@gmail.com', '2021-05-30 10:25:44', '$2y$10$tPqz3d/dr72fUIaQGfpjRum5j9b0G3UN4HHTKP3Kb.NXFj9inuEVS', NULL, NULL, NULL, NULL, NULL, '2021-05-30 10:25:26', '2021-05-30 10:25:44', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -261,9 +299,9 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `location`
+-- Indexes for table `locations`
 --
-ALTER TABLE `location`
+ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -301,9 +339,9 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Indexes for table `ticket`
+-- Indexes for table `tickets`
 --
-ALTER TABLE `ticket`
+ALTER TABLE `tickets`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -336,10 +374,10 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `location`
+-- AUTO_INCREMENT for table `locations`
 --
-ALTER TABLE `location`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -360,28 +398,28 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `ticket`
+-- AUTO_INCREMENT for table `tickets`
 --
-ALTER TABLE `ticket`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tickets`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `trains`
 --
 ALTER TABLE `trains`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
