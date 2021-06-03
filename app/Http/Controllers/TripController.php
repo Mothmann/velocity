@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Train;
 use App\Models\Trip;
 
 use Illuminate\Http\Request;
@@ -21,6 +23,7 @@ class TripController extends Controller
             ->where('Arrival_city', 'like',$request->search2)
             ->where('Departure_station', 'like',$request->search3)
             ->where('Arrival_station', 'like',$request->search4)
+            ->where('Departure_Date', '>=',$request->search5)
             ->get();
 
 
@@ -43,7 +46,6 @@ class TripController extends Controller
      */
     public function create()
     {
-      return view('trips.create');
     }
 
     /**
@@ -54,37 +56,6 @@ class TripController extends Controller
      */
     public function store(Request $request, Trip $trip)
     {
-//dd($request);
-        /*$this->validate($request,[
-            'Departure_city'=>'required',
-             'Arrival_city'=>'required',
-             'Departure_station'=>'required',
-             'Arrival_station'=>'required',
-             'price'=>'required',
-             'Arrival_Time'=>'required',
-             'Departure_Date'=>'required',
-             'dispo'=>'required',
-             'train_id'=>'required'
-         ]);*/
-
-$trip = new Trip([
-            'Departure_city'=>$request->Departure_city,
-            'Arrival_city'=>$request->Arrival_city,
-            'Departure_station'=>$request->Departure_station,
-            'Arrival_station'=>$request->Arrival_station,
-            'price'=>$request->price,
-            'Arrival_Time'=>$request->Arrival_Time,
-            'Departure_Date'=>$request->Departure_Date,
-            'dispo'=>$request->dispo,
-            'train_id'=>$request->train_id,
-         ]);
-
-         $trip->save();
-//dd($trip);
-
-
-            return redirect()->route('admin.admin.index')->withSuccess('trip added');
-       //dd($request->all());
 
     }
 
@@ -107,11 +78,7 @@ $trip = new Trip([
      */
     public function edit(Request $request)
     {
-        //dd( $request );
-        //dd( $trip );
-        $trip = Trip::find($request->id);
-        //dd( $trip );
-        return view('trips.edit')->with('trip', $trip);
+
     }
 
     /**
@@ -125,19 +92,6 @@ $trip = new Trip([
 
 
     {
-        $trip = Trip::find($request->id );
-        //dd($trip);
-        $trip ->Departure_city=$request->Departure_city;
-        $trip ->Arrival_city= $request->Arrival_city;
-        $trip ->Departure_station=$request->Departure_station;
-        $trip ->Arrival_station=$request->Arrival_station;
-        $trip ->price=$request->price;
-        $trip ->Arrival_Time=$request->Arrival_Time;
-        $trip ->Departure_Date=$request->Departure_Date;
-        $trip ->dispo=$request->dispo;
-        $trip ->train_id=$request->train_id;
-        $trip->update();
-        return redirect()->route('admin.admin.index')->withSuccess('trip updated');
 
     }
 
@@ -149,8 +103,6 @@ $trip = new Trip([
      */
     public function destroy(Request $request)
     {
-        $trip = Trip::find($request->id);
-        $trip->delete();
-        return redirect()->route('admin.admin.index')->withSuccess('trip DELETED');
+
     }
 }

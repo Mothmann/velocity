@@ -20,6 +20,7 @@
                 background-color: rgb(34,34,34);
                 color: white;
                 transition: 0.3s linear;
+                overflow-x: hidden;
             }
     </style>
 </head>
@@ -36,18 +37,19 @@
         <ul>
             <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
             <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
-            @if (Auth::check())
-                    <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
-                    <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        <i class="fas fa-user-alt"></i></a></li>
-                    <li><a href="{{ url('/ticket') }}">My tickets</a></li>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <li><a  href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            this.closest('form').submit();"><i class="fas fa-power-off"></i></a></li>
-                </form>
-               @else
+                    @if (Auth::check())
+                        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+                        <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                            <i class="fas fa-user-alt"></i></a></li>
+                        <li><a href="{{ url('/ticket') }}"><i class="fas fa-clipboard-list" class="active"></i></a></li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <li><a  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"><i class="fas fa-power-off"></i></a></li>
+                    </form>
+                    @else
                     <div class="dropdown">
                         <li class="fuck"><a href="#"><i class="fas fa-user"></i></a></li>
                         <div class="dropdown-content">
@@ -57,95 +59,49 @@
                 </div>
                     @endif
 
-            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt" style="color: rgb(255,183,0)"></i></a></li>
+            <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         </ul>
     </nav>
-    <div class="empty"></div>
-    <div class="container">
-        <div class="container-time">
-            @include('includes.messages')
-            <h2 class="heading">Booking</h2>
-            <h3 class="heading-days">Book your train tickets</h3>
-            <p>from the comfort of your home</p>
-            <p>in just a few clicks</p>
-            <h3 class="heading-days">No More Waiting</h3>
-            <p>You no longer have to wait in long queues for Velocity ticket booking</p>
-            <p>since online railway reservation is now easy, quick and secure with Velocity online reservation</p>
-            <hr>
-            <h4 class="heading-phone">Call Us: (+212) 522-029-44</h4>
-        </div>
 
-         @yield('content')
-        <div class="container-form">
-            <form action="{{route('trips.index')}}" method="post">
-                @csrf
-            <h2 class="heading heading-yellow" id="ylw">Reservation Online</h2>
-            <div class="form-field">
-                <p for="search">Departure_city</p>
-                <input type="text" name="search" id="" class="form-control" placeholder="search...">
-            </div>
-            <div class="form-field">
-                <p for="search">Arrival_city</p>
-                <input type="text" name="search2" id="" class="form-control" placeholder="search...">
-            </div>
-            <div class="form-field">
-                <p for="search">Departure_station</p>
-                <input type="text" name="search3" id="" class="form-control" placeholder="search...">
-            </div>
-            <div class="form-field">
-                <p for="search">Arrival_station</p>
-                <input type="text" name="search4" id="" class="form-control" placeholder="search...">
-            </div>
-                <button class="btn"type="submit" >search</button>
-            </form>
-        </div>
-    </div>
-    <h3 style="color: rgb(255,183,0);letter-spacing:2px; text-align:center;font-weight:700;font-size:3rem;margin:2% 0">Trips</h3>
     <div class="row-2 ">
         <div class="col-2">
-            <div class="boxe">
-               <div class="trips">
-                       @php
-                           $total=0;
-                       @endphp
-                        @foreach ($trips as $trip)
-                       <form action="{{route('paypal_call')}}" method="post">
-                           <div class="infos">
-                               <div class="info-center">
-                                   <h3 class="text-info">
-                                      <a herf="{{ route ('trip.show',$trip->id) }}" class="link">
-                                            {{$trip->Departure_city}}-{{$trip->Arrival_city}}
-                                      </a>
-                                   </h3>
-                                   <h3 class="dollar">
-                                    @php
-                                       $total = $trip->price /10;
-                                        echo $total;
-                                   @endphp
-                                   </h3>
+            <div class="box">
+               <h3 class="box-title">
+                  My Tickets
+               </h3>
+               <div class="tickets">
+                    @foreach ($tickets as $ticket)
+                       <div class="infos">
+                           <div class="info-center">
+                               <h2 class="text-info">
+                                  <a herf="{{ route ('tickets.show',$ticket->id) }}" class="link">
+                                    {{$ticket->Departure_city}} ---> {{$ticket->Arrival_city}}
+                                  </a>
+                               </h2>
+                               <div class=info2>
+                                   <h3>{{$ticket->Departure_station}} ---> {{$ticket->Arrival_station}}</h3>
+                                    <h2>{{$ticket->date}}</h2>
 
-                                   <p class="info">
-                                       <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
-                                       <span class="price">{{$trip->price}} Dhs</span>
                                </div>
-                               @csrf
-                               <div class="row">
-                                   <input type="hidden" name="amount" value="{{ $total }}">
-                                   <button type="submit">pay now</button>
-                               </div>
-                   </form>
+                               <div>
+                               <h1 class="info">
+                                   <span class="price">{{$ticket->price}} dh</span>
+                                   <span class="ticket-id">#N {{$ticket->id}}</span>
+                                </div>
                            </div>
-                        @endforeach
-            </div></div>
+
+                       </div>
+                    @endforeach
+
+               </div>
            </div>
        </div>
     </div>
 
-
     <footer class="footer">
         <div class="footer-left">
             <img src="images/logo2.png" alt="">
-            <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
             <div class="socials">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -226,31 +182,8 @@
  </script>
 </html>
 <style>
-    /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-    .light-mode span{
-        color: rgb(255,183,0);
-    }
 .container {
-    margin: auto;
-    width: 85%;
+    margin: 200px;
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
     display: grid;
     grid-template-columns: 40% 60%;
@@ -258,12 +191,10 @@
 }
 .container-time {
     background-color: rgb(23, 23, 23);
-    padding: 40px;
+    padding: 50px;
     outline: 3px dashed rgb(255,183,0);
     outline-offset: -30px;
     text-align: center;
-    margin: auto;
-    height: 100%;
 }
 .heading {
     font-size: 35px;
@@ -275,43 +206,7 @@
     font-size: 30px;
 
 }
-.dollar{
-    display: none;
-}
-.row {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-.row button{
-    padding: 0.5rem 1.5rem;
-    margin-bottom: 3%;
-    border-radius: 5px;
-    background: rgb(255,183,0);
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-.row button:hover{
-    transform: scale(1.1);
-}
-form.x{
-    display: block;
-}
-.trips{
-    margin-bottom: 5%;
-}
-.boxe{
-    width: -webkit-fill-available;
-    margin: auto;
-}
-h3.text-info {
-    color: antiquewhite;
-    padding: 5% 0 0 5%;
-}
+
 .heading-phone {
     font-size: 20px;
 }
@@ -321,8 +216,7 @@ h3.text-info {
     color: white;
 }
 .container-form h2{
-    color: rgb(255,183,0);
-    text-align: center;
+    color: rgb(255,183,0)
 }
 form {
     display: grid;
@@ -330,19 +224,16 @@ form {
 }
 form p {
     font-weight: 600;
-    text-align: center;
 }
 .form-field {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
 }
 
 input,select {
     padding: 10px 15px;
     border: 2px solid rgb(255,183,0);
-    border-bottom: 5px solid rgb(255,183,0);
-    border-radius: 5px;
+    border-bottom: 5px solid rgb(255,183,0)
 }
 .btn {
     background-color: rgb(255,183,0);
@@ -376,10 +267,6 @@ input,select {
 @media(max-width: 970px){
     .container{
         display: block;
-    }
-    form{
-        padding-left: 5%;
-        padding-right: 5%;
     }
 }
 @media(max-width: 658px){
@@ -420,13 +307,12 @@ input,select {
         margin: auto;
     }
     form p{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
+        display: block;
     }
-
+    input,select{
+        width: 60%;
+        margin: inherit;
+    }
 }
         /*navigation css with resonsive*/
 nav{
@@ -511,11 +397,9 @@ nav .menu-btn i{
     nav .menu-btn i{
         display: block;
     }
-    nav{
-        position: fixed;
-    }
     .empty{
     height: 10rem;
+    background: rgb(34,34,34);
 }
 @media (max-width: 480px){
     .main-header h3{
@@ -566,7 +450,7 @@ left: 0;
 }
 nav ul li{
 width: 100%;
-margin: 40px 0;
+margin: 15px 0;
 }
 nav ul li a{
 width: 100%;
@@ -673,7 +557,13 @@ footer{
 .box a {
     color: #999;
 }
-
+.box-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255,183,0);
+    font-size: 3rem;
+}
 .footer-bottom{
     text-align: center;
     color: #999;
@@ -704,22 +594,16 @@ footer{
         font-size: 1.5rem;
     }
 }
-  .button{
-          background-color:rgb(255,183,0);
-          color:white;
-          padding: 15px 25px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-        }
-
-        .button:hover, button:active {
-           color:white;
-           background-color:rgb(255,149,0) ;
-        }
-       .trips{
-
-          color: rgb(255,183,0);
+       .tickets{
+        width: 100%;
+        color: rgb(255,183,0);
+        border-radius: 20px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
         }
         .row-1{
           width:1000px;
@@ -727,34 +611,68 @@ footer{
           margin-left:40px
         }
        .row-2{
-          width:1000px;
           margin: 20px;
           display: contents;
         }
+
         .col-2 {
-           display: flex;
            flex-direction: row;
            flex-wrap: nowrap;
            justify-content: center;
            align-content: center;
            align-items: center;
-           width: 90%;
-           margin: auto;
          }
        .infos{
-          width: 100%;
+          width: 70%;
           margin-bottom: 10px;
           justify-content: space-between;
-          box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.061);
           border-radius: 20px;
           border: rgb(42, 41, 41) 1px solid;
-          background: rgb(34 34 34);
+          background-color: rgb(44, 43, 41);
+          margin-top:50px
         }
        .info{
           display:flex;
-          justify-content: space-between;
-          margin: 50px;
+          justify-content: space-around;
+          margin: 15px;
+        }
+        .info2 {
+            margin-top: 10%;
+            margin-top: 10%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+        }
+        h2.text-info {
+            margin-top: 5%;
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h2 {
+           margin-left: 20px;
+        }
+@media screen and (max-width: 415px){
+    h2.text-info {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: inherit;
+    }
+    .info2{
+        font-size: small;
+    }
 }
-
-
 </style>
+

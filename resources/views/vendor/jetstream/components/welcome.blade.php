@@ -123,11 +123,12 @@
         font-family: 'Poppins', sans-serif;
     }
     a{
-        text-decoration: none;
-        color: white;
+        text-decoration: underline;
+        color: rgb(255, 183, 0);
+        transition: 0.3s ease-in-out;
     }
     a:hover{
-        color: rgb(255, 183, 0);
+        transform: translateX(1.1);
     }
     .middle .contenu .laravel .text{
         display: flex;

@@ -242,7 +242,6 @@
 
     .\}\}\<\/div\>.\<ul.class\={
         color: #dd4b39;
-        text-align: center;
         display: block;
         margin-bottom: 3%;
     }

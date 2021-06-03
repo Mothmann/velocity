@@ -28,7 +28,7 @@
     <ul>
         <li><a href="{{url("/about")}}"><i class="fas fa-address-card"></i></a></li>
         <li><a href="{{url("/contact")}}"><i class="fas fa-file-signature"></i></a></li>
-        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
+        <li><a href="{{ url('/dashboard') }}" id="x1"><i class="fas fa-tachometer-alt"></i></a></li>
             <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <li><a href="{{ route('logout') }}"
@@ -36,15 +36,21 @@
                         this.closest('form').submit();">
                         <i class="fas fa-power-off"></i></a></li>
             </form>
-            <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+            <li><a id="x2" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                 <i class="fas fa-user-alt"></i></a></li>
 
         <li><a href="{{url("/trip")}}"><i class="fas fa-ticket-alt"></i></a></li>
         <div>
             @if (auth()->user()->role_id == 2)
-                <li><a><x-jet-nav-link class="active" href="{{ route('admin.admin.index') }}" :active="request()->routeIs('admin')">
-                    {{ __('admin') }}
+            <div class="dropdown">
+                <li class="dissapear"><x-jet-nav-link href="" :active="request()->routeIs('admin')">
+                    <i class="fas fa-users-cog" style="color: rgb(255, 183, 0)"></i>
                 </x-jet-nav-link></li></a>
+                <div class="dropdown-content">
+                <li><a href="{{ url('/admin/trip') }}"><i class="fas fa-suitcase"></i></a></li>
+                <li><a href="{{ url('/admin/train') }}"><i class="fas fa-train"></i></a></li>
+                <li><a class="active" href="{{ url('/admin/location') }}"><i class="fas fa-location-arrow"></i></a></li>
+            </div>
             @endif
         </div>
     </ul>
@@ -52,7 +58,7 @@
     <div class="row-1 my-4">
         <div class="col-1-md-12">
             <div class="form-group">
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addTrips">Create trip</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addLocations">Create location</button>
             </div>
             <div class="box">
                <div class="card-body">
@@ -60,33 +66,21 @@
                             <thead>
                                 <tr>
                                    <th>id</th>
-                                   <th>Departure_city</th>
-                                   <th>Arrival_city</th>
-                                   <th>Departure_station</th>
-                                   <th>Arrival_station</th>
-                                   <th>price</th>
-                                   <th>Arrival_Time</th>
-                                   <th>Departure_Date</th>
-                                   <th>dispo</th>
-                                   <th>train_id</th>
+                                   <th>city</th>
+                                   <th>station</th>
+                                   <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach($trips as $trip)
+                              @foreach($locations as $location)
                                 <tr>
-                                   <td>{{$trip->id}}</td>
-                                   <td>{{$trip->Departure_city}}</td>
-                                   <td>{{$trip->Arrival_city}}</td>
-                                   <td>{{$trip->Departure_station}}</td>
-                                   <td>{{$trip->Arrival_station}}</td>
-                                   <td>{{$trip->price}}</td>
-                                   <td>{{$trip->Arrival_Time}}</td>
-                                   <td>{{$trip->Departure_Date}}</td>
-                                   <td>{{$trip->dispo}}</td>
-                                   <td>{{$trip->train_id}}</td>
+                                   <td>{{$location->id}}</td>
+                                   <td>{{$location->city}}</td>
+                                   <td>{{$location->station}}</td>
+
                                    <td>
-                                      <a href="{{route('admin.trips.edit', ['id' => $trip->id])}}"class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                      <a href="/admin/deletetrip?id={{ $trip->id }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                                      <a href="{{route('admin.locations.edit', ['id' => $location->id])}}"class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                      <a href="/admin/deletelocation?id={{ $location->id }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                                    </td>
                                 </tr>
                               @endforeach
@@ -95,75 +89,34 @@
                </div>
             </div>
        </div>
-        <div class="modal fade" id="addTrips" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addLocations" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
 
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Add trips</h4>
+              <h4 class="modal-title" id="myModalLabel">Add locations</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="close">
                     <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.trips.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.locations.store')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field() }}
-                      <div class="form-group">
-                          <label for="">Departure_city*</label>
-                          <input type="text" name="Departure_city"
-                             id="" class="form-control"
-                             placeholder="Departure_city" aria-describedby="helpId">
-                      </div>
-                      <div class="form-group">
-                        <label for="">Arrival_city*</label>
-                        <input type="text" name="Arrival_city"
+                    <div class="form-group">
+                        <label for="">city*</label>
+                        <input type="text" name="city"
                            id="" class="form-control"
-                           placeholder="Arrival_city" aria-describedby="helpId">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Departure_station*</label>
-                        <input type="text" name="Departure_station"
+                           placeholder="city" aria-describedby="helpId">
+                     </div>
+                     <div class="form-group">
+                        <label for="">station*</label>
+                        <input type="text" name="station"
                            id="" class="form-control"
-                           placeholder="Departure_station" aria-describedby="helpId">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Arrival_station*</label>
-                        <input type="text" name="Arrival_station"
-                           id="" class="form-control"
-                           placeholder="Arrival_station" aria-describedby="helpId">
-                    </div>
-                    <div class="form-group">
-                        <label for="">price*</label>
-                        <input type="text" name="price"
-                           id="" class="form-control"
-                           placeholder="price" aria-describedby="helpId">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Arrival_Time*</label>
-                        <input type="time" name="Arrival_Time"
-                           id="Arrival_Time" class="form-control"
-                           placeholder="Arrival_Time" aria-describedby="helpId">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Departure_Date*</label>
-                        <input type="datetime-local" name="Departure_Date"
-                           id="Departure_Date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="">dispo*</label>
-                        <select type="text" name="dispo"
-                           id="dispo" class="form-control">
-                           <option value="" selected disableded>choose a value</option>
-                           <option value="0">oui</option>
-                           <option value="1">no</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="">train_id</label>
-                        <input type="text" name="train_id"
-                           id="train_id" class="form-control">
-                    </div>
+                           placeholder="station" aria-describedby="helpId">
+                     </div>
+
+
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Valider</button>
@@ -181,7 +134,16 @@
   <style>
     body{
         background-color: rgb(34,34,34);
-        }
+        overflow-x: hidden;
+    }
+    .form-group{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-group button{
+        color: white;
+    }
     nav{
          display: flex;
          height: 10vh;
@@ -220,10 +182,6 @@
         nav ul li a:hover{
           color: rgb(255,183,0);
         }
-        .box{
-          background: rgb(34,34,34);
-          box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
-       }
        .table th{
            color: white;
        }
@@ -305,6 +263,10 @@ nav .menu-btn i{
 @media (max-width: 920px) {
     nav{
         position: fixed;
+        top: 0;
+    }
+    .my-4{
+        margin-top: 6.5rem !important;
     }
     nav .menu-btn i{
         display: block;
@@ -651,6 +613,232 @@ padding-right: 20%;
     color: rgb(34,34,34);
 }
    </style>
+   <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    }
+    .usr{
+        text-decoration: none;
+        color: white;
+        display: flex;
+    }
+    .usr:hover{
+        color: rgb(255,183,0);
+    }
+    .dropdown-content{
+        display: none;
+        position: absolute;
+        background-color: rgb(34,34,34);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+        flex-direction: column;
+        color: rgb(255,183,0);
+    }
+    *{
+        scroll-behavior: smooth
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+
+    nav{
+        background: rgb(34,34,34);
+        display: flex;
+        height: 10vh;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+    }
+    nav .logo{
+        color: rgb(255,183,0);
+        font-size: 35px;
+        font-weight: 600;
+        z-index: 1;
+    }
+    nav .logo img{
+        max-width: 120px;
+        display: flex !important;
+    }
+    nav ul{
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    nav ul li{
+        margin: 0 5px;
+    }
+    nav ul li a{
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        color: rgb(255,183,0);
+    }
+
+    nav .menu-btn i{
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    input[type="checkbox"]{
+        display: none;
+    }
+    @media (max-width: 1000px){
+    nav{
+        padding: 0 40px 0 50px;
+    }
+    }
+    @media (max-width: 920px) {
+        .dropdown:hover .dropdown-content{
+            display: contents;
+        }
+        .dissapear{
+            display: none;
+        }
+        .usr{
+            display: contents;
+        }
+        .empty{
+        height: 10vh;
+        }
+        .fa-bars:before {
+            content: "\f0c9";
+        }
+        nav{
+            position: fixed;
+        }
+        .fuck{
+            display: none;
+        }
+
+        nav .dropdown-content{
+            display: contents;
+        }
+        nav .menu-btn i{
+            display: block;
+        }
+        .dropdown{
+            display: flex;
+        }
+        .col p{
+            font-size: 80%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+
+    #click:checked ~ .menu-btn i:before{
+        content: "\f00d";
+        z-index: 2;
+    }
+    nav ul,a.loreg{
+        position: fixed;
+        padding-top: 5%;
+        top: 10vh;
+        left: -100%;
+        background: #111;
+        height: 90vh;
+        width: 100vw;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        opacity: 0.9;
+    }
+    #click:checked ~ ul{
+        left: 0;
+    }
+    nav ul li{
+        width: 100%;
+        margin: 20px 0;
+    }
+    nav ul li a, .usr{
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    #click:checked ~ ul li a{
+        margin-left: 0px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+        background: none;
+        color: rgb(255,183,0);
+    }
+
+    #test{
+        height: 90vh ;
+        width: 100% ;
+        z-index: 1;
+
+    }
+
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        width: 100%;
+        background-image: url("images/motion-blur.jpg") !important;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    .content div{
+        display: inline;
+    }
+
+    .content h3{
+        color: white;
+        text-align: center;
+        font-size: 40px;
+        font-weight: 400;
+        letter-spacing: 5px;
+        margin-top: 3%;
+    }
+    @media screen and (max-width: 481px){
+        nav .logo{
+            font-size: 1.5rem;
+        }
+    }
+}
+
+</style>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

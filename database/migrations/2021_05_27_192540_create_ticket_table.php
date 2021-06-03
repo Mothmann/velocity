@@ -13,13 +13,30 @@ class CreateTicketTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('trip_id');
-            $table->integer('price');
+            $table->unsignedBiginteger('user_id', null);
+            $table->string('name', 191)->nullable();
+            $table->string('Departure_city', 191)->nullable();
+            $table->string('Arrival_city', 191)->nullable();
+            $table->string('Departure_station', 191)->nullable();
+            $table->string('Arrival_station', 191)->nullable();
+            $table->unsignedBiginteger('trip_id');
+            $table->unsignedBiginteger('price');
             $table->dateTime('date');
             $table->string('pdf_location', 191);
+            $table->timestamps();
+        });
+        Schema::table('tickets', function (Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users')->nullable()->unsigned();
+            $table->foreign('name')->references('name')->on('users')->unsigned();
+            $table->foreign('Departure_city')->references('Departure_city')->on('trips');
+            $table->foreign('Arrival_city')->references('Arrival_city')->on('trips');
+            $table->foreign('Departure_station')->references('Departure_station')->on('trips');
+            $table->foreign('Arrival_station')->references('Arrival_station')->on('trips');
+            $table->foreign('price')->references('price')->on('trips');
+            $table->foreign('date')->references('Departure_Date')->on('trips');
+
         });
     }
 

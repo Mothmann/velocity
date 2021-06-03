@@ -23,8 +23,15 @@ class CreateTripsTable extends Migration
             $table->time('Arrival_Time')->nullable();
             $table->timestamp('Departure_Date')->useCurrent();
             $table->tinyInteger('dispo')->default(0);
-            $table->integer('train_id');
+            $table->unsignedBiginteger('train_id');
             $table->timestamps();
+        });
+        Schema::table('trips', function (Blueprint $table){
+            $table->foreign('Departure_city')->references('city')->on('location');
+            $table->foreign('Arrival_city')->references('city')->on('location');
+            $table->foreign('Departure_station')->references('station')->on('location');
+            $table->foreign('Arrival_station')->references('station')->on('location');
+            $table->foreign('train_id')->references('id')->on('trains');
         });
     }
 
