@@ -37,15 +37,26 @@ class addTicketController extends Controller
         return view('tickets.create')->with('trips',$trips);
 
     }
-    public function pdf()
+    public function pdf(Request $request, Ticket $ticket)
     {
-
-            $tickets = Ticket::where('id', Ticket::raw("(select max(id)from tickets)"))
+        $tickets = Ticket::where('id', Ticket::raw("(select max(id)from tickets)"))
             ->get();
-            view()->share('tickets',$tickets);
-            $pdf = PDF::loadView('pdf', $tickets);
-             return $pdf->download('tickets.pdf');
-             return view('pdf');
+        view()->share('tickets',$tickets);
+        $pdf = PDF::loadView('pdf', $tickets);
+            $tickets = ['tickets'=>$tickets];
+            if (Auth::check()){
+                $tickets["email"] = Auth::user()->email;
+                Mail::send('pdf', $tickets, function($message)use($tickets, $pdf) {
+                    $message->from('noreply@velocity.ma', 'velocity')
+                        ->to($tickets["email"])
+                        ->subject("tickets here!")
+                        ->attachData($pdf->output(),"tickets.pdf");
+                });}
+
+            return $pdf->download('tickets.pdf');
+            return view('pdf');
+
+
 
     }
 
