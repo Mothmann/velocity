@@ -120,6 +120,10 @@
 
     </div>
 </div>
+<hr>
+<div class="map">
+    <img src="images/map.png" alt="">
+</div>
         <footer class="footer">
             <div class="footer-left">
                 <img src="images/logo2.png" alt="">
@@ -326,6 +330,13 @@
         margin: auto;
         margin-top: 2%;
         margin-bottom: 2%;
+    }
+    .map img{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
     }
     h1{
         text-align: center;
