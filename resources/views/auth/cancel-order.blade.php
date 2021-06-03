@@ -14,7 +14,7 @@
     <div class="description">
         {{ __('Your order has just been cancelled.') }}
     </div>
-    <div><a href="{{url("/")}}"><i class="fas fa-home"></i><h3>return to the home page</h3></a></div>
+    <div class="return"><a href="{{url("/")}}"><button>return to the home page</button></a></div>
 
 </body>
 </html>
@@ -22,6 +22,24 @@
     body{
         background: rgb(34, 34, 34);
         color: white;
+    }
+    .return button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(255, 183, 0);
+        border: none;
+        color: white;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+    }
+    .return{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .return a{
+        text-decoration: none;
     }
     *{
         margin: 0;
