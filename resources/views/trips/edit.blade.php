@@ -15,7 +15,7 @@
     <div class="container">
          <div class="row my-5">
               <div class="col-md-8 mx-auto ">
-                 <div class="card bg-light">
+                 <div class="card">
                       <div class="card-body">
                          <form action="{{route('admin.trips.update',$trip->id)}}" method="put" enctype="multipart/form-data">
                             {{csrf_field() }}
@@ -134,6 +134,13 @@
                .table th{
                    color: white;
                }
+                .card{
+                    background-color: rgb(42, 41, 41);
+                    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
+                }
+                .card label{
+                color: white;
+                }
                .table td{
                    color: white;
                }

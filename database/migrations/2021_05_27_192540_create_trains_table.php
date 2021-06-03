@@ -18,6 +18,7 @@ class CreateTrainsTable extends Migration
             $table->string('type', 191);
             $table->integer('Max-capacity');
             $table->string('Driver', 191);
+            $table->timestamps();
         });
     }
 

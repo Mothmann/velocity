@@ -49,7 +49,7 @@
                     </form>
                     @else
                     <div class="dropdown">
-                        <li class="fausr"><a href="#"><i class="fas fa-user"></i></a></li>
+                        <li class="fausr"><a href="#"><i class="fas fa-user" style="color: rgb(255,183,0)"></i></a></li>
                         <div class="dropdown-content">
                         <li><a class="login" href="{{ route('login') }}">Log in</a></li>
                         <div class="sign-in">

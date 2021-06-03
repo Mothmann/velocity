@@ -19,7 +19,6 @@
           <i class="fas fa-bars"></i>
         </label>
         <ul>
-            
           <li><a href="{{url("/")}}">Home</a></li>
           <li><a href="{{url("/trip")}}" class="active">Trips</a></li>
           <li><a  href="{{url("/about")}}">About</a></li>
@@ -46,37 +45,17 @@
 
       @yield('content')
     </div>
-    <div class="row-1">
-        <div class="col-1">
-            <div class="box">
-                 <h3 class="box-title">
-                     search
-                 </h3>
-                 <div class="card-body">
-                      <form action="#" method="post">
-                          <div class="form-group">
-                              <label for="search">search</label>
-                              <input type="text" name="search" id="" class="form-control" placeholder="search...">
-                          </div>
-                          <div class="btn">
-                              <button type="submit" >search</button>
-                          </div>
-                      </form>
-                 </div>
-            </div>
-        </div>
-    </div>
     <div class="row-2 ">
         <div class="col-2">
             <div class="box">
                <h3 class="box-title">
-                   {{$trip->Departure_city}} - {{$trip->Arrival_city}}
+                   {{$date->date}}
                </h3>
                <div class="trips">
                        <div class="infos">
                                <p class="info">
-                                   <span class="station">{{$trip->Departure_station}}-{{$trip->Arrival_station}}</span>
-                                   <span class="price">{{$trip->price}} dh</span>
+                                   <span class="station">{{$ticket->id}}</span>
+                                   <span class="price">{{$ticket->price}} dh</span>
                                </p>
                                <p>
                                   <a href="tickets" class="button">buy ticket</a>
@@ -191,6 +170,6 @@
         }
 
      </style>
+     
 </body>
 </html>
-

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class location extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function Trip(){
+        return $this->hasMany(Trip::class);
+    }
 }

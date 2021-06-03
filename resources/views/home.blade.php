@@ -122,7 +122,7 @@
                             <hr>
                             <h4>Having a pleasent ride in our trains is a <br> number one priority .</h4>
                             <div class="button">
-                                <a href="#middle">Learn More</a>
+                                <a href="{{url("/about")}}">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
@@ -133,7 +133,7 @@
                             <hr>
                             <h4>We pride ourselves in our diversity, ethics, transparency, climate and solidarity .</h4>
                             <div class="button">
-                                <a href="#middle">Learn More</a>
+                                <a href="{{url("/about")}}">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
@@ -144,7 +144,7 @@
                             <hr>
                             <h4>Trains, passenger services, cards & fares, <br> and sustainable mobility .</h4>
                             <div class="button">
-                                <a href="#middle">Learn More</a>
+                                <a href="{{url("/about")}}">Learn More</a>
                             </div>
                         </div>
                         <div class="part-1">
@@ -155,7 +155,7 @@
                             <hr>
                             <h4>Your door-to-door itinerary, timetables, booking, and real-time traffic updates.</h4>
                             <div class="button">
-                                <a href="#middle">Learn More</a>
+                                <a href="{{url("/about")}}">Learn More</a>
                             </div>
                         </div>
                         </div>

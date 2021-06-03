@@ -57,9 +57,13 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Log Out Other Browser Sessions') }}
-            </x-jet-button>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <button  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();">log out</button>
+           </form>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
                 {{ __('Done.') }}
@@ -91,11 +95,13 @@
                     {{ __('Cancel') }}
                 </x-jet-secondary-button>
 
-                <x-jet-button class="ml-2"
-                            wire:click="logoutOtherBrowserSessions"
-                            wire:loading.attr="disabled">
-                            {{ __('Log Out Other Browser Sessions') }}
-                </x-jet-button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <li><button  href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">log out</button></li>
+               </form>
             </x-slot>
         </x-jet-dialog-modal>
     </x-slot>
@@ -192,6 +198,7 @@
         text-align: center;
         font-size: 1.2rem;
         color: #dd4b39;
+        height: auto;
     }
     svg.w-8.h-8.text-gray-500 {
         width: 30px;
@@ -204,6 +211,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+        margin-top: 3%;
     }
     .mt-5.space-y-6 {
         margin-bottom: 2%;
@@ -224,6 +232,7 @@
         border-radius: 15px;
         transition: 0.3s ease-in-out;
         font-size: 1rem;
+        padding: 0.5rem 1.5rem;
     }
     button:hover{
         transform: scale(1.1);
