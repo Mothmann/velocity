@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function() {
 });
 Route::post('/add/tickets', 'App\Http\Controllers\addTicketController@store')->name('tickets.store');
 Route::get('/ticket', 'App\Http\Controllers\addTicketController@index')->name('tickets.show');
+Route::get('/paynow', 'App\Http\Controllers\PaypalController@price')->name('paynow');
 Route::get('/create/ticket', 'App\Http\Controllers\addTicketController@create')->name('tickets.create');
 Route::post('/trip', 'App\Http\Controllers\TripController@index')->name('trips.index');
 Route::get('/create/ticket', 'App\Http\Controllers\addTicketController@create')->name('tickets.create');

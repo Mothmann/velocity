@@ -99,6 +99,10 @@
                 <p for="search">Arrival_station</p>
                 <input type="text" name="search4" id="" class="form-control" placeholder="search...">
             </div>
+            <div class="form-field">
+                <p for="search">Departure_Date</p>
+                <input type="datetime-local" name="search5" id="" class="form-control" placeholder="search...">
+            </div>
                 <button class="btn"type="submit" >search</button>
             </form>
         </div>
@@ -123,7 +127,6 @@
                                    <h3 class="dollar">
                                     @php
                                        $total = $trip->price /10;
-                                        echo $total;
                                    @endphp
                                    </h3>
 
@@ -133,8 +136,7 @@
                                </div>
                                @csrf
                                <div class="row">
-                                   <input type="hidden" name="amount" value="{{ $total }}">
-                                   <button type="submit">pay now</button>
+                                <a href="{{route('tickets.create',$trip->id)}}"class="btn btn-warning">buy ticket</a>
                                </div>
                    </form>
                            </div>

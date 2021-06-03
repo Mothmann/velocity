@@ -29,85 +29,80 @@
                  <div class="card-body" >
                     @foreach ($trips as $trip)
                     <form action="{{route('tickets.store',$trip->id)}}" method="post" enctype="multipart/form-data">
-                       {{csrf_field() }}
-                       <input type="hidden" name="id" >
-                       <input  type="hidden" name="trip_id" value="{{ $trip->id}}" >
-                       <input  type="hidden" name="price" value="{{ $trip->price }}">
-                       @endforeach
-                    @if (Auth::check())
-                            <div class="form-group">
-                            <label for="">Departure_city</label>
-                            <input type="text" name="Departure_city"
-                                id="date" class="form-control" value="{{ $trip->Departure_city }}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Arrival_city</label>
-                            <input type="text" name="Arrival_city"
-                                id="date" class="form-control" value="{{ $trip->Arrival_city }}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Departure_station</label>
-                            <input type="text" name="Departure_station"
-                                id="date" class="form-control" value="{{ $trip->Departure_station}}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Arrival_station</label>
-                            <input type="text" name="Arrival_station"
-                                id="date" class="form-control" value="{{ $trip->Arrival_station }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="">date*</label>
-                                <input type="text" name="date"
-                                    id="date" class="form-control" value="{{ $trip->Departure_Date }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="">pdf_location*</label>
-                                <input type="text" name="pdf_location"
-                                id="pdf_location" class="form-control">
-                            </div>
-                        @else
-                        <div class="form-group">
-                            <label for="name">name</label>
-                            <input type="text" name="name"
-                                id="name" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Departure_city</label>
-                            <input type="text" name="Departure_city"
-                                id="date" class="form-control" value="{{ $trip->Departure_city }}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Arrival_city</label>
-                            <input type="text" name="Arrival_city"
-                                id="date" class="form-control" value="{{ $trip->Arrival_city }}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Departure_station</label>
-                            <input type="text" name="Departure_station"
-                                id="date" class="form-control" value="{{ $trip->Departure_station}}" readonly>
-                            </div>
-                            <div class="form-group">
-                            <label for="">Arrival_station</label>
-                            <input type="text" name="Arrival_station"
-                                id="date" class="form-control" value="{{ $trip->Arrival_station }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="">date*</label>
-                                <input type="text" name="date"
-                                    id="date" class="form-control" value="{{ $trip->Departure_Date }}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="">pdf_location*</label>
-                                <input type="text" name="pdf_location"
-                                id="pdf_location" class="form-control">
-                            </div>}
-                        @endif
-                  <div class="modal-footer">
-                     <a href="{{ route('pdf',['download'=>'pdf']) }}">Download PDF</a>
-                    <button href={{url("/trip")}} className="btn" href="#" type="submit" class="btn btn-primary">confirme</button>
-                    <a className="btn" href="{{url()->previous()}}" class="btn btn-warning">Cancel</a>
-                   </div>
-                </form>
+                        {{csrf_field() }}
+                        <input type="hidden" name="id" >
+                        <input  type="hidden" name="trip_id" value="{{ $trip->id}}" >
+                        <input  type="hidden" name="price" value="{{ $trip->price }}">
+                        @endforeach
+                     @if (Auth::check())
+                             <div class="form-group">
+                             <label for="">Departure_city</label>
+                             <input type="text" name="Departure_city"
+                                 id="Departure_city" class="form-control" value="{{ $trip->Departure_city }}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Arrival_city</label>
+                             <input type="text" name="Arrival_city"
+                                 id="Arrival_city" class="form-control" value="{{ $trip->Arrival_city }}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Departure_station</label>
+                             <input type="text" name="Departure_station"
+                                 id="Departure_station" class="form-control" value="{{ $trip->Departure_station}}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Arrival_station</label>
+                             <input type="text" name="Arrival_station"
+                                 id="Arrival_station" class="form-control" value="{{ $trip->Arrival_station }}" readonly>
+                             </div>
+                             <div class="form-group">
+                                 <label for="">date*</label>
+                                 <input type="text" name="date"
+                                     id="date" class="form-control" value="{{ $trip->Departure_Date }}" readonly>
+                             </div>
+                         @else
+                         <div class="form-group">
+                             <label for="name">name</label>
+                             <input type="text" name="name"
+                                 id="name" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="">email*</label>
+                             <input type="text" name="email"
+                             id="email" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label for="">Departure_city</label>
+                             <input type="text" name="Departure_city"
+                                 id="Departure_city" class="form-control" value="{{ $trip->Departure_city }}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Arrival_city</label>
+                             <input type="text" name="Arrival_city"
+                                 id="Arrival_city" class="form-control" value="{{ $trip->Arrival_city }}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Departure_station</label>
+                             <input type="text" name="Departure_station"
+                                 id="Departure_station" class="form-control" value="{{ $trip->Departure_station}}" readonly>
+                             </div>
+                             <div class="form-group">
+                             <label for="">Arrival_station</label>
+                             <input type="text" name="Arrival_station"
+                                 id="Arrival_station" class="form-control" value="{{ $trip->Arrival_station }}" readonly>
+                             </div>
+                             <div class="form-group">
+                                 <label for="">date*</label>
+                                 <input type="text" name="date"
+                                     id="date" class="form-control" value="{{ $trip->Departure_Date }}" readonly>
+                             </div>
+                         @endif
+                   <div class="modal-footer">
+
+                     <a href="{{url}}"><button  className="btn"  type="submit" class="btn btn-primary">confirme</button></a>
+                     <a className="btn" href="{{url("/trip")}}" class="btn btn-danger">Cancel</a>
+                    </div>
+                 </form>
                  </div>
             </div>
 

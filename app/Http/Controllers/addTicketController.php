@@ -5,7 +5,8 @@ use App\Models\Ticket;
 use App\Models\Trip;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use \PDF;
+use PDF;
+use Mail;
 
 class addTicketController extends Controller
 {
@@ -33,24 +34,32 @@ class addTicketController extends Controller
     public function create()
     {
         $trips =Trip::all();
-        return view('tickets.create')->with('trips',$trips)
-        ;
+        return view('tickets.create')->with('trips',$trips);
 
     }
-    public function pdf(Request $request)
+    public function pdf(Request $request, Ticket $ticket)
     {
-        if (Auth::check()){
-           $tickets = Ticket::where('User_id', 'like', Auth::user()->id)
-                              ->get();}
-        else{
-                $tickets = Ticket::all();}
-           view()->share('tickets',$tickets);
-           if($request->has('download')){
-               $pdf = PDF::loadView('pdf');
-            return $pdf->download('tickets.pdf');
-        }
-        return view('pdf');
+
+            $tickets = Ticket::where('id', Ticket::raw("(select max(id)from tickets)"))
+            ->get();
+            view()->share('tickets',$tickets);
+            if($request->has('download')){ $pdf = PDF::loadView('pdf', $tickets);
+              $tickets = Ticket::select('email')->get();
+              Mail::send('pdf', ['tickets' => $tickets], function($message)use($tickets, $pdf) {
+              $message->from('noreply@velocity.ma', 'velocity')
+                     ->to($tickets->email)
+                     ->subject("tickets here!")
+                     ->attachData($pdf->output(),"tickets.pdf");
+        });
+
+             return $pdf->download('tickets.pdf'); }
+             return view('pdf');
+
+
+
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -63,6 +72,7 @@ class addTicketController extends Controller
         $this->validate($request,[
             'user_id'=>'nullable',
             'name'=>'nullable',
+            'email'=>'nullable',
             'Departure_city'=>'required',
             'Arrival_city'=>'required',
             'Departure_station'=>'required',
@@ -70,12 +80,13 @@ class addTicketController extends Controller
             'trip_id'=>'required',
             'price'=>'required',
             'date'=>'required',
-            'pdf_location'=>'required',
-        ]);
+        ]); //dd( $request );
         if (Auth::check()){
+            //dd( $ticket);
             $ticket = new Ticket([
                 'user_id'=>Auth::user()->id,
                 'name'=>Auth::user()->name,
+                'email'=>Auth::user()->email,
                 'Arrival_city'=>$request->Arrival_city,
                 'Departure_city'=>$request->Departure_city,
                 'Arrival_city'=>$request->Arrival_city,
@@ -84,23 +95,24 @@ class addTicketController extends Controller
                 'trip_id' => $request->trip_id,
                 'price'  =>$request->price,
                 'date'  => $request->date,
-                'pdf_location'=>$request->pdf_location,
             ]);
+
            }else{
                 $ticket = new Ticket([
                     'user_id'   => $request->user_id,
                     'name'=>$request->name,
+                    'email'=>$request->email,
                     'Departure_city'=>$request->Departure_city,
                     'Arrival_city'=>$request->Arrival_city,
                     'Departure_station'=>$request->Departure_station,
                     'Arrival_station'=>$request->Arrival_station,
                     'trip_id' => $request->trip_id,
                     'price'  =>$request->price,
-                    'date'  => $request->date,
-                    'pdf_location'=>$request->pdf_location,]);
+                    'date'  => $request->date,]);
             }
             $ticket->save();
-    return redirect()->route('trips.index')->withSuccess('trip added');
+
+    return redirect()->route('tickets.create')->withSuccess('trip added');
 }
 
 
