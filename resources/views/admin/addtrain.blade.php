@@ -162,7 +162,8 @@
     }
     body{
         background-color: rgb(34,34,34);
-        }
+        overflow-x: hidden;
+    }
     nav{
          display: flex;
          height: 10vh;

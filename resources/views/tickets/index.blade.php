@@ -41,7 +41,7 @@
                         <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i></a></li>
                         <li><a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                             <i class="fas fa-user-alt"></i></a></li>
-                        <li><a href="{{ url('/ticket') }}"><i class="fas fa-clipboard-list" class="active"></i></a></li>
+                        <li><a class="active" href="{{ url('/ticket') }}"><i class="fas fa-clipboard-list"></i></a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 

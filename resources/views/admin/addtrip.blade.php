@@ -47,8 +47,8 @@
                     <i class="fas fa-users-cog" style="color: rgb(255, 183, 0)"></i>
                 </x-jet-nav-link></li></a>
                 <div class="dropdown-content">
-                    <li><a href="{{ url('/admin/trip') }}"><i class="fas fa-suitcase"></i></a></li>
-                <li><a class="active" href="{{ url('/admin/train') }}"><i class="fas fa-train"></i></a></li>
+                <li><a class="active" href="{{ url('/admin/trip') }}"><i class="fas fa-suitcase"></i></a></li>
+                <li><a href="{{ url('/admin/train') }}"><i class="fas fa-train"></i></a></li>
                 <li><a href="{{ url('/admin/location') }}"><i class="fas fa-location-arrow"></i></a></li>
             </div>
             @endif
@@ -111,7 +111,13 @@
   <style>
     body{
         background-color: rgb(34,34,34);
-        }
+        overflow-x: hidden;
+    }
+    .form-group{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     nav{
          display: flex;
          height: 10vh;

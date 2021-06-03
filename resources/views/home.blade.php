@@ -414,6 +414,7 @@
         background: rgb(34,34,34);
         color: white;
         transition: 0.3s linear !important;
+        overflow-x: hidden;
     }
     .welcome h1{
         text-align: center;

@@ -56,6 +56,11 @@
         letter-spacing: 2px;
         color: rgb(255, 183, 0);
         font-weight: 700;
+        text-align: center;
+    }
+    hr{
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
     .description{
         display: flex;

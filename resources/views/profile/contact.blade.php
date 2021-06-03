@@ -765,7 +765,7 @@ section{
         min-width: 1100px;
         min-height: 550px;
         display: flex;
-        z-index: -1;
+        z-index: 1;
     }
     .container .contactInfo{
         position: absolute;
@@ -968,4 +968,31 @@ section{
                 width: 100%;
             }
         }
+    }
+    .light-mode {
+        background-color: rgb(216, 216, 216);
+        color: rgb(34,34,34);
+        transition: 0.3s linear;
+    }
+    .light-mode .section i{
+        border-color: rgb(34,34,34)
+    }
+    .light-mode .footer-left p{
+        color: white;
+    }
+    .light-mode .footer h2{
+        color: white;
+    }
+    .light-mode hr{
+        background: rgb(34,34,34);
+    }
+    .ggl{
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10%;
+        height: 300px;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
 </style>

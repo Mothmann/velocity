@@ -237,4 +237,102 @@
     button:hover{
         transform: scale(1.1);
     }
+    /*footer*/
+
+    footer{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: row wrap;
+        padding: 50px;
+        padding-bottom: 1%;
+        background: rgb(34,34,34);
+    }
+
+    .footer > *{
+        flex: 1 100%;
+    }
+    .footer-left{
+        margin-right: 1.25em;
+        margin-bottom: 2em;
+
+    }
+    .footer-left img{
+        width: 50%;
+    }
+
+    .footer h2{
+        font-weight: 600;
+        font-size: 17px;
+    }
+
+    .footer ul{
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .footer li{
+        line-height: 2em;
+        margin-top: 1%;
+    }
+
+    .footer a{
+        text-decoration: none;
+    }
+    .footer-right{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .footer-right > * {
+        flex: 1 50%;
+        margin-right: 1.25en;
+    }
+
+    .box a {
+        color: #999;
+    }
+
+    .footer-bottom{
+        text-align: center;
+        color: #999;
+        padding-top: 50px;
+    }
+
+    .footer-left p{
+        padding-right: 20%;
+    }
+
+    .footer-dark-mode {
+        width: 30px;
+        cursor: pointer;
+        margin-top: 2%;
+    }
+
+    .socials a i{
+        color: #e7f2f4;
+        padding: 10px 12px;
+        font-size: 20px;
+    }
+
+    @media screen and (min-width: 600px) {
+        .footer-right > * {
+            flex: 1;
+        }
+        .footer-left{
+            flex: 1 0px;
+        }
+        .footer-right{
+            flex: 2 0px;
+        }
+        .col p{
+            font-size: 1.5rem;
+        }
+    }
 </style>

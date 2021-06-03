@@ -43,11 +43,11 @@
             </div>
             <div class="half1">
                 <div class="offers">
-                    <div class="documentation"><i class="fas fa-window-close"></i>Cancel Purchase</div>
+                    <div class="documentation"><i class="fas fa-ticket-alt"></i>Tickets History</div>
                         <p>
-                            If the purchase is made by mistake it may be canceled.
+                            To check the history of the tickets you've previously bought, click below
                         </p>
-                        <a href="/contact">Click Here :</a>
+                        <a href="{{ url('/ticket') }}">Click Here :</a>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
         <footer class="footer">
             <div class="footer-left">
                 <img src="images/logo2.png" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada leo mauris, non ultricies nunc</p>
+                <p>Velocity is a train provider in Morocco that offers well-equipped coaches, luxurious seats, competitive pricing, and free WI-FI .</p>
                 <div class="socials">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
