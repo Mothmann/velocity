@@ -21,7 +21,7 @@ class SocialController extends Controller
     {
         try {
             $user = Socialite::driver('facebook')->user();
-            $isUser = User::where('fb_id', $user->id)->first();
+            $isUser = User::where('email', $user->email)->first();
 
             if ($isUser) {
                 Auth::login($isUser);
@@ -53,7 +53,7 @@ class SocialController extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
-            $isUser = User::where('google_id', $user->id)->first();
+            $isUser = User::where('email', $user->email)->first();
 
             if ($isUser) {
                 Auth::login($isUser);
